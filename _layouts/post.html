@@ -1,60 +1,58 @@
----
-layout: default
----
+--- layout: default ---
 
 <article>
 
 	<div class="center">
 		<h1>{{ page.title }}</h1>
-		<time>{{ page.date | date: site.date_format  }}</time>
+		<time>{{ page.date | date: site.date_format }}</time>
 	</div>
 
 
 	<div class="divider"></div>
 
-	{{ content }}
-	
-	{% if site.show_sharing_icons %}
-	{% include share_buttons.html %}
-	{% endif %}
+	{{ content }} {% if site.show_sharing_icons %} {% include share_buttons.html %} {% endif %}
 </article>
 
 <div class="page-navigation">
 	{% if page.next.url %}
-    <a class="next" href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}" title="NEXT: {{page.next.title}}">&lt;&lt;</a>
-		<span> &middot; </span>
-  {% endif %}
-		<a class="home" href="{{ site.baseurl | prepend: site.url }}" title="Back to Homepage">Home</a>
-  {% if page.previous.url %}
-		<span> &middot; </span>
-    <a class="prev" href="{{ page.previous.url | prepend: site.baseurl | prepend: site.url }}" title="PREV: {{page.previous.title}}">&gt;&gt;</a>
-  {% endif %}
+	<a class="next" href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}" title="NEXT: {{page.next.title}}">&lt;&lt;</a>
+	<span> &middot; </span>
+	{% endif %}
+	<a class="home" href="{{ site.baseurl | prepend: site.url }}" title="Back to Homepage">Home</a>
+	{% if page.previous.url %}
+	<span> &middot; </span>
+	<a class="prev" href="{{ page.previous.url | prepend: site.baseurl | prepend: site.url }}" title="PREV: {{page.previous.title}}">&gt;&gt;</a>
+	{% endif %}
 </div>
 
 
 
+<div class="after-article">
+	{% if txtpen.txtpen_sitename %}
+	<script src="https://txtpen.com/embed.js?site={{txtpen.txtpen_sitename}}" />
+	 {% endif %} 
+	
+	{% if site.disqus_shortname %}
+	<div id="disqus_thread"></div>
+	<script>
 
-{% if txtpen.txtpen_sitename %}
-<script src="https://txtpen.com/embed.js?site={{txtpen.txtpen_sitename}}" />
-{% endif %}
+		/**
+		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+		var disqus_config = function () {
+			this.page.url = '{{ site.url }}' + '{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		(function () { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://tasubo-dev.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the
+		<a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+	</noscript>
+	{% endif %}
 
-{% if site.disqus_shortname %}
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-var disqus_config = function () {
-this.page.url = '{{ site.url }}' + '{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://tasubo-dev.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endif %}
+</div>
