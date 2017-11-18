@@ -1,9 +1,9 @@
 body {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 22px;
   font-weight: normal;
   font-style: normal;
-  font-family: consolas, monaco, courier, "courier new", fixed-width;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;  
   color: #333333;
   padding: 20px;
   margin: 0;
@@ -54,7 +54,7 @@ blockquote {
   -webkit-animation-duration: 0.7s;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: bounce;
-  a {
+  a.avatar {
     background: #ddd url("gravatar_wrapper.png");
     color: #000;
     text-decoration: none;
@@ -188,7 +188,7 @@ iframe {
   width: 100%;
 }
 article {
-  max-width: 500px;
+  max-width: 750px;
   margin: 0 auto;
   .title {
     line-height: 1.4em;
@@ -212,7 +212,7 @@ article {
     margin: 30px 0;
   }
   p {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.9em;
     word-wrap: break-word;
   }

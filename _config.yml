@@ -1,22 +1,53 @@
 # Site Info
 title:              "Tadas Šubonis"
 description: "A bit of my thoughts about Software Development and Design"
-google_verify:      epFgX0s_0RM3CdjwFcsewfXzPov2g8s9ZBOLyaIUH-o # Put your Google Verification here
+google_verification:      epFgX0s_0RM3CdjwFcsewfXzPov2g8s9ZBOLyaIUH-o # Put your Google Verification here
 google_analytics:   UA-28958262-1 # Put your Google Analytics code
 
 # Author Info
 author_name:        "Tadas Šubonis"
 author_email:       tadas.subonis@gmail.com
 author_gravatar:    ee486159b1d117f768d2d720c5cc6cae # Gravatar md5 hash
-twitter_username:   dankeris
+twitter_username:   Dankeris
 github_username:    tadas-subonis # GitHub username
 
 # Site Settings
 url:                https://dev.tasubo.com # main url
-baseurl:            # for gh-pages
+date_format: "%Y-%m-%d"
+baseurl:            "" # for gh-pages
 permalink:          /:year/:month/:title.html # Post permalink
 timezone:           Europe/Prague # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 mathjax:            true  # enables support for mathjax - set to false to disable
+
+
+disqus_shortname: TadasSubonis
+
+show_sharing_icons: true
+share_facebook: true
+share_twitter: true
+share_googleplus: false
+share_linkedin: false
+share_digg: false
+share_tumblr: false
+share_reddit: false
+share_stumbleupon: false
+share_hackernews: true
+
+show_social_icons: true
+# Social icons
+github_username: tadas-subonis
+bitbucket_username:
+stackoverflow_id: 520601
+twitter_username: Dankeris
+skype_username:
+steam_nickname:
+google_plus_id:
+linkedin_username: tadassubonis
+angellist_username:
+medium_id: tadas.subonis
+bitcoin_url:
+paypal_url:
+flattr_button:
 
 # Site Build
 highlighter:        rouge
@@ -28,11 +59,15 @@ sass:
 
 # Other Params
 include:            [ "robots.txt" ]
-exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
-gems:
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+plugins:
+  - jekyll-paginate
   - jekyll-sitemap
-
-
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
 
 defaults:
   -
