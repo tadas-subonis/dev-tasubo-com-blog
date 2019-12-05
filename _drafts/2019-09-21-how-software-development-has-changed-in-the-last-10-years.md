@@ -34,6 +34,9 @@ through the roof and at the moment it is one of the most popular languages (not 
 However, it was a bit strange seeing how long the migration to Python 3 took. Until a few years ago, people were still clinging
 unto Python 2.7 even though Python 3 had many more features that would make you productive. But I guess async nailed it in the end.
 
+What's bizarre is that still by the end of 2019 Python can't deal with GIL and multithreading is broken, while consumer CPUs have
+32 cores.
+
 ### JavaScript
 I would say that Web Development has been one of the more dynamic fields in the industry.
 As I have worked quite a bit as a full stack developer, I am no stranger to JavaScript either. It is more of a hate-love relationship
@@ -46,9 +49,9 @@ terms of interoperability with the rest of JavaScript ecosystem.
 
 JavaScript modernized as well. There are now proper classes, map and reduce functions, const variables and other nice things.
 With the help of NodeJS it also got a lot more popular. For better or worse, people have started deploying server-side JavaScript
-and MEAN (Mongo-Express.js-Angular-NodeJs) got extremely popular at some point.
+and MEAN (Mongo-Express.js-Angular-NodeJs) stack got extremely popular at some point in mid 2010s.
 
-#### Web Development
+### Web Development
 
 Web Development deserves some special attention. Last 10 years transformed web from semi-document and semi-application network to a 
 full fledged application platform.
@@ -85,7 +88,8 @@ No developer can work without their IDE. Over the last 10 years, two main trends
  * power editors are now in the game
 
 I used to be a big fan of Netbeans but now old-guard IDEs such as Eclipse and Netbeans are pretty much dead.
-IntelliJ and friends took everything over.
+IntelliJ and friends took everything over. IntelliJ has an IDE for every language that you might want, and if they do not - 
+there is a plug-in.
 
 Also, a new wave of power editors such as Sublime, Atom, and Visual Studio Code stand strong with those who feel
 that they want to stick with leaner tools. Visual Studio Code has gotten the edge in the last few years.
@@ -95,11 +99,11 @@ that they want to stick with leaner tools. Visual Studio Code has gotten the edg
 It turned out so that I've always had to do a fair share of operational/infrastructure work.
 
 Quite a bit of changed in DevOps and infrastructure related work as well. I can still remember running
-production server on Gentoo Linux for an e-shop and several other co-hosted websites in 2008. Experiencing 
-Ops and later developments (good developments) in the field, led me avoid running my own infrastructure
+production server on Gentoo Linux for an e-shop and several other co-hosted websites in 2008. This
+experience led me to avoid running my own infrastructure
 as it is quite attention intensive business.
 
-Luckily, I wasn't alone and a lot of infrastructure work moved to the cloud.
+Luckily, I wasn't alone and a lot of infrastructure moved to the cloud.
 
 ### Cloud
 10 years ago you could get either a dedicated server or a shared-hosting solution. AWS was far from its
@@ -168,41 +172,59 @@ AKS, you are out-of-lock, as deploying your own cluster is even more complicated
 with k3s and the likes).
 
 ## Data Engineer and Machine Learning
-For the later half of the decade I was involved in data and machine learning engineering.
-Python is defacto choice.
+For the later half of the decade I was involved in data and machine learning engineering (and during the first half I was
+only an aspirer). The amount of changes that occurred here deserves a post of its own but I'll try to summarize it here anyway.
 
-Tensorflow liberated GPU machine learning
-PyTorch made it simple
+### Neural Networks
+This field just exploded. In 2010 people were doing just regular dense multi-layer perceptrons that could process only 2D arrays
+(feature vector + batch). All of the training was being done on CPUs. Even when 
+[https://arxiv.org/abs/1301.3781](Tomas Mikolov) released Word2Vec, it was trained on the CPUs. 
+Only crazy 
+people like [https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf](Alex Krizhevsky) 
+would implement
+training on the GPU using C\C++ with CUDA.
 
-Pandas made data analysis fast and easy
-
-It's not anymore about having a feature vector and weights in NN
-
-Probabilistic Models are starting to look interesting again
-
-CNN took over the world
-NN are feasible for text using RNN and friends.
-
-
-
-
-## OOP vs. Functional
-pass lambdas everywhere
-much more functional
-
-design patterns are relevant as ever
-design patters are irrelevant as ever
+But Alex's paper was the breakthrough. It showed that Deep Neural Networks are feasible (again). Later, people picked up tools such as
+Theano to help them with neural net training. By the end of the decade Theano was dead
+and we had tools such as Tensorflow and PyTorch. Now they are
+being used to train [https://arxiv.org/abs/1810.04805](BERTs), [https://arxiv.org/abs/1410.5401](Neural Turing Machines), and beat [https://deepmind.com/blog/article/alphastar-mastering-real-time-strategy-game-starcraft-ii](Starcraft).
 
 
-## Programming styles
+### Python again
+Data analysis and engineering changed a lot as well. Before, there was only numpy and matplotlib. Quite a few 
+academics used R; some outcasts used Weka and Rapidminer.
 
-Write an API test
+However, quite quickly Python and friends took everything over. Jupyter, Pandas and Scikit became tools of everyday data
+analyst/scientist/engineer. Analysis and machine learning brainstorming that used to take weeks now takes only a few days.
 
-Make the code work
+### Data Engineering
+At the start of the decade, the only tool that people used was Hadoop and MapReduce. Take a bunch of distributed data, process it,
+and put the results back in the same distributed database. Rinse and Repeat.
 
-Keep it stupid simple
+These days we have a much wider selection of tools. For starters, Apache Hadoop (and friends) ecosystem grew immensely and 
+now we have:
+ * Apache Pig - for SQL-like queries on Hadoop
+ * Apache HBase - columnar storage on Hadoop
+ * Apache Hive - SQL-like database on Hadoop
+ * Apache Kafka - scalable queue service
+ * Apache Spark - pipeline for distributed data processing
+ * more...
 
+Lots of these services have now managed alternatives in the cloud (Google BigQuery, Google Dataproc, Amazon Redshift) so you wouldn't 
+need to worry setting everything up. However, you might need to commit to storing data on S3 or some other Block storage for cloud alternative.
 
+Some other prominent tools propped up in Python ecosystem such as Airflow and Dask that can make your life easier.
+
+### Other models
+It looks like probabilistic (Bayesian) models are starting to pick up again. Using PyMC it is extremely easy to create and
+prototype models. Pyro makes it easy to scale your probabilistic learning on GPUs.
+
+I am not familiar with the state of MCMC in R ecosystem at the start of the decade but it seems they had some decent tools available. 
+However, if I recall correctly, most of the software (samplers and models) where either custom build in-house or used specialized software.
+
+Also, it seems that MCMC approaches completely took over other inference methods due to its simplicity and scalability. I've never heard using
+[https://en.wikipedia.org/wiki/Belief_propagation](Message-passing) anymore and [https://arxiv.org/abs/1601.00670](Variational Inference) is not that popular either.
 
 # Outro
-Quite a bit has happened. What are the things that you've noticed?
+It was a mouthful. Quite a bit has happened. What are the things that you've noticed?
+In the next post, I'll share how my programming practices have changed (hopefully for better).
