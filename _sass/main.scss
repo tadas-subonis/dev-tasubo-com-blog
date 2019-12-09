@@ -50,10 +50,6 @@ blockquote {
   text-align: center;
   animation-duration: 0.7s;
   animation-fill-mode: both;
-  animation-name: bounce;
-  -webkit-animation-duration: 0.7s;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-name: bounce;
   a.avatar {
     background: #ddd url("gravatar_wrapper.png");
     color: #000;
@@ -298,7 +294,7 @@ article {
   }
 }
 section {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto 50px auto;
   ul {
     list-style: none;

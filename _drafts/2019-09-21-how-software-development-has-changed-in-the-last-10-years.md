@@ -6,6 +6,8 @@ author: Tadas Šubonis
 tags:
 - software
 - programming
+- devops
+- cloud
 modified_time: '2019-09-21'
 ---
 

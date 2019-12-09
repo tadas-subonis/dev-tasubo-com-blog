@@ -1,6 +1,6 @@
 # Site Info
 title:              "Tadas Šubonis"
-description: "A bit of my thoughts about Software Development and Design"
+description: "A bit of my thoughts about Software Development"
 google_verification:      epFgX0s_0RM3CdjwFcsewfXzPov2g8s9ZBOLyaIUH-o # Put your Google Verification here
 google_analytics:   UA-28958262-1 # Put your Google Analytics code
 
@@ -51,7 +51,7 @@ flattr_button:
 
 # Site Build
 highlighter:        rouge
-markdown:           kramdown
+markdown: kramdown
 kramdown:
     input:          GFM
 sass:
