@@ -1,14 +1,14 @@
 ---
 layout: post
 title: How my software development has changed in the last 10 years
-date: '2019-09-21'
+date: '2020-01-11'
 author: Tadas Šubonis
 tags:
 - software
 - programming
 - devops
 - cloud
-modified_time: '2019-09-21'
+modified_time: '2020-01-11'
 ---
 
 
@@ -27,6 +27,12 @@ Java, one of my main tools, has started evolving again thanks to Oracle (althoug
 made some [controversial decisions](https://labs.consol.de/development/2019/02/05/oracle-license-is-the-free-lunch-over.html)).
 These days Java has lambdas, modularized structure, streams, and some other cool stuff.
 
+Spring Boot has taken over application servers (and who can blame them - they were a pain to work with). Additionally, Spring
+developers almost completely abandoned XML-based configuration in favor of Java-based configuration. 
+
+I believe that I could also claim that people took a liking to automatically generated quality-of-life code. Projects like
+[Immutables](https://immutables.github.io/) or [Lombok](https://projectlombok.org/) are now a common sight. 
+
 ### Python
 
 Python is my current tool of choice for Data Engineering and Machine Learning related tasks. No surprise here. 10 years ago
@@ -34,7 +40,8 @@ Python was a language that only students and non-Ruby hipster developers used. I
 through the roof and at the moment it is one of the most popular languages (not only among data guys).
 
 However, it was a bit strange seeing how long the migration to Python 3 took. Until a few years ago, people were still clinging
-unto Python 2.7 even though Python 3 had many more features that would make you productive. But I guess async nailed it in the end.
+unto Python 2.7 even though Python 3 had many more features
+(f-strings, dataclasses, type annotations) that would make you productive. But I guess async nailed it in the end.
 
 What's bizarre is that still by the end of 2019 Python can't deal with GIL and multithreading is broken, while consumer CPUs have
 32 cores.
@@ -42,8 +49,8 @@ What's bizarre is that still by the end of 2019 Python can't deal with GIL and m
 ### JavaScript
 I would say that Web Development has been one of the more dynamic fields in the industry.
 As I have worked quite a bit as a full stack developer, I am no stranger to JavaScript either. It is more of a hate-love relationship
-though. It's amazingly poorly engineered language and people have been trying to get rid of it since way back. Dart, GWT, CoffeeScript,
-and now TypeScript are all monuments to that.
+though. It's an amazingly poorly engineered language and people have been trying to get rid of it since way back. Dart, GWT, CoffeeScript,
+and now TypeScript are all monuments to that effort.
 
 In recent years, it looks like Typescript has started winning developer hearts over. I guess I fall into that category too. Having tried
 GWT and Dart, I could say that Typescript helped me avoid more of the annoying bits of JavaScript, but it did not hurt my productivity in
@@ -52,6 +59,9 @@ terms of interoperability with the rest of JavaScript ecosystem.
 JavaScript modernized as well. There are now proper classes, map and reduce functions, const variables and other nice things.
 With the help of NodeJS it also got a lot more popular. For better or worse, people have started deploying server-side JavaScript
 and MEAN (Mongo-Express.js-Angular-NodeJs) stack got extremely popular at some point in mid 2010s.
+
+Even if your target browsers doesn't support all the new features, you can use Babel and Webpack to transpile the code to something that 
+every browser will understand (however, a human might not).
 
 ### Web Development
 
@@ -79,7 +89,7 @@ above to deliver a non-trivial application. In the old days, you had to just kno
 ### .NET
 I haven't done any work with .NET platform but it deserves a special mention.
 C# and its platform are now Open Source. 10 years ago people would not have believed that it would be possible. 
-Mono project was struggling to get adoption and there were no dreams about getting a full .NET platform on Linux.
+Mono project was struggling to get adoption and there were no hopes about getting a full .NET platform on Linux.
 
 To fully appreciate the magnitude of the change you have to remember that Microsoft once called OpenSource (Linux) a cancer.
 
@@ -98,7 +108,7 @@ that they want to stick with leaner tools. Visual Studio Code has gotten the edg
 
 
 ## DevOps
-It turned out so that I've always had to do a fair share of operational/infrastructure work.
+I've always had to do a fair share of operational/infrastructure work.
 
 Quite a bit of changed in DevOps and infrastructure related work as well. I can still remember running
 production server on Gentoo Linux for an e-shop and several other co-hosted websites in 2008. This
@@ -131,12 +141,12 @@ setting it up, scaling, managing backups.
 
 It is extremely convenient and time saving. Obviously, some people might still want to do that manually to
 squeeze out extra performance and savings, but it is no longer necessary. In my experience, the worst screw
-ups that services experience are due to failures operating the database.
+ups that services experience are due to failures in database operations.
 
 Managed internet-scale managed databases deserve some extra attention. I believe that the first one to
 appear was Google Datastore (as a part of App Engine) in the late 2000s. Later, DynamoDB, Azure Table Service,
 and CosmosDB followed. These services introduced automatic scaling, granular charges for the operations,
-and virtually unbounded capacities. Personally, I believe that these services had huge consequences on
+and virtually unbounded capacities. Personally, I believe that these services had an impact on
 how we develop things. If you had a low volume service, you could get away by not paying anything for the database.
 However, you could get punished severely for missing N+1 query on a high-traffic website.
 
@@ -162,15 +172,15 @@ While people where crazy building microservices, they soon realized that they ne
 containers. So people started building tools for container orchestration.
 
 One of the first attempts to do that came from CoreOS with fleetd and etcd. As one of the early adopters back
-in the 2014, I would like that it was smooth journey but... I can't. In the beginning, there were lots of parts 
+in the 2014, I would like to say that it was smooth journey but... I can't. In the beginning, there were lots of parts 
 that were missing or just too simplistic- service discovery, smooth failovers, logging, persistent volumes. Later,
 Docker Swarm, Rancher, Mesos, DCOS appeared. However, by the end of 2018, it became clear Kubernetes is the
-winner.
+winner. [Etcd](https://github.com/etcd-io/etcd) needed three rewrites until it became usable.
 
 Having used CoreOS and Docker Swarm, I must say that Kubernetes made lots of things possible (and easy) but also
 it is a tool with a steep learning curve. For a novice, it is far from simple for deploying their first application
 and especially making it ready for production. And, if you can't use a managed Kubernetes service such as GKE or
-AKS, you are out-of-lock, as deploying your own cluster is even more complicated (but it is getting easier especially
+AKS, you are out-of-luck, as deploying your own cluster is even more complicated (but it is getting easier especially
 with k3s and the likes).
 
 ## Data Engineer and Machine Learning
@@ -194,7 +204,7 @@ being used to train [https://arxiv.org/abs/1810.04805](BERTs), [https://arxiv.or
 
 ### Python again
 Data analysis and engineering changed a lot as well. Before, there was only numpy and matplotlib. Quite a few 
-academics used R; some outcasts used Weka and Rapidminer.
+academics used R and MATLAB; some outcasts used Weka and Rapidminer.
 
 However, quite quickly Python and friends took everything over. Jupyter, Pandas and Scikit became tools of everyday data
 analyst/scientist/engineer. Analysis and machine learning brainstorming that used to take weeks now takes only a few days.
@@ -221,7 +231,8 @@ Some other prominent tools propped up in Python ecosystem such as Airflow and Da
 It looks like probabilistic (Bayesian) models are starting to pick up again. Using PyMC it is extremely easy to create and
 prototype models. Pyro makes it easy to scale your probabilistic learning on GPUs.
 
-I am not familiar with the state of MCMC in R ecosystem at the start of the decade but it seems they had some decent tools available. 
+I am not familiar with the state of MCMC (Markov Chain Monte Carlo)
+in R ecosystem at the start of the decade but it seems they had some decent tools available. 
 However, if I recall correctly, most of the software (samplers and models) where either custom build in-house or used specialized software.
 
 Also, it seems that MCMC approaches completely took over other inference methods due to its simplicity and scalability. I've never heard using
