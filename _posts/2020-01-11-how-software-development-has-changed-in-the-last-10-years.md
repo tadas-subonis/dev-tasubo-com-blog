@@ -225,12 +225,12 @@ now we have:
  * more...
 
 Lots of these services have now managed alternatives in the cloud (Google BigQuery, Google Dataproc, Amazon Redshift) so you wouldn't 
-need to worry setting everything up. However, you might need to commit to storing data on S3 or some other Block storage for cloud alternative.
+need to worry setting everything up. However, you might need to commit to storing data on S3 or some other alternative for Block Storage on the cloud.
 
-Some other prominent tools propped up in Python ecosystem such as Airflow and Dask that can make your life easier.
+Some other prominent tools propped up in Python ecosystem such as [Airflow](https://airflow.apache.org/) and [Dask](https://dask.org/) that can make your life easier.
 
 ### Other models
-It looks like probabilistic (Bayesian) models are starting to pick up again. Using PyMC it is extremely easy to create and
+It looks like probabilistic (Bayesian) models are starting to pick up again. Using [PyMC](https://docs.pymc.io/) it is extremely easy to create and
 prototype models. Pyro makes it easy to scale your probabilistic learning on GPUs.
 
 I am not familiar with the state of MCMC (Markov Chain Monte Carlo)
