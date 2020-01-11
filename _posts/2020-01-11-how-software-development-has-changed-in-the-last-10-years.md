@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How my software development has changed in the last 10 years
+title: How software development has changed in the last 10 years
 date: '2020-01-11'
 author: Tadas Šubonis
 tags:
@@ -49,7 +49,7 @@ What's bizarre is that still by the end of 2019 Python can't deal with GIL and m
 
 ### JavaScript
 I would say that Web Development has been one of the more dynamic fields in the industry.
-As I have worked quite a bit as a full stack developer, I am no stranger to JavaScript either. It is more of a hate-love relationship
+As I have worked quite a bit as a full stack developer, I am no stranger to JavaScript either. It is more of a love-hate relationship
 though. It's an amazingly poorly engineered language and people have been trying to get rid of it since way back. Dart, GWT, CoffeeScript,
 and now TypeScript are all monuments to that effort.
 
