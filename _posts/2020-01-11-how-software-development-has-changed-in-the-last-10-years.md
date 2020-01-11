@@ -14,7 +14,8 @@ modified_time: '2020-01-11'
 
 It's a new post to this almost-abandoned blog. I would even say that my inactivity here is a huge missed opportunity.
 Despite that
-I've been writing a bit elsewhere (Medium, Facebook, LinkedIn, Packt). 
+I've been writing a bit elsewhere ([Medium](https://medium.com/@tadas.subonis), Facebook, LinkedIn, [Packt](https://www.packtpub.com/eu/application-development/reactive-android-programming))
+but that's a poor excuse.
 
 To kick it off, I figured it would be perfect to do overview of how
 software development has changed (in my eyes) over the last 10 years.
@@ -104,7 +105,8 @@ IntelliJ and friends took everything over. IntelliJ has an IDE for every languag
 there is a plug-in.
 
 Also, a new wave of power editors such as Sublime, Atom, and Visual Studio Code stand strong with those who feel
-that they want to stick with leaner tools. Visual Studio Code has gotten the edge in the last few years.
+that they want to stick with leaner tools. Visual Studio Code has gotten the edge over the others
+in the last few years.
 
 
 ## DevOps
