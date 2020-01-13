@@ -192,16 +192,16 @@ only an aspirer). The amount of changes that occurred here deserves a post of it
 ### Neural Networks
 This field just exploded. In 2010 people were doing just regular dense multi-layer perceptrons that could process only 2D arrays
 (feature vector + batch). All of the training was being done on CPUs. Even when 
-[https://arxiv.org/abs/1301.3781](Tomas Mikolov) released Word2Vec, it was trained on the CPUs. 
+[Tomas Mikolov](https://arxiv.org/abs/1301.3781) released Word2Vec, it was trained on the CPUs. 
 Only crazy 
-people like [https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf](Alex Krizhevsky) 
+people like [Alex Krizhevsky](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
 would implement
 training on the GPU using C\C++ with CUDA.
 
 But Alex's paper was the breakthrough. It showed that Deep Neural Networks are feasible (again). Later, people picked up tools such as
 Theano to help them with neural net training. By the end of the decade Theano was dead
 and we had tools such as Tensorflow and PyTorch. Now they are
-being used to train [https://arxiv.org/abs/1810.04805](BERTs), [https://arxiv.org/abs/1410.5401](Neural Turing Machines), and beat [https://deepmind.com/blog/article/alphastar-mastering-real-time-strategy-game-starcraft-ii](Starcraft).
+being used to train [BERTs](https://arxiv.org/abs/1810.04805), [Neural Turing Machines](https://arxiv.org/abs/1410.5401), and beat [Starcraft](https://deepmind.com/blog/article/alphastar-mastering-real-time-strategy-game-starcraft-ii).
 
 
 ### Python again
@@ -238,7 +238,7 @@ in R ecosystem at the start of the decade but it seems they had some decent tool
 However, if I recall correctly, most of the software (samplers and models) where either custom build in-house or used specialized software.
 
 Also, it seems that MCMC approaches completely took over other inference methods due to its simplicity and scalability. I've never heard using
-[https://en.wikipedia.org/wiki/Belief_propagation](Message-passing) anymore and [https://arxiv.org/abs/1601.00670](Variational Inference) is not that popular either.
+[Message-passing](https://en.wikipedia.org/wiki/Belief_propagation) anymore and [Variational Inference](https://arxiv.org/abs/1601.00670) is not that popular either.
 
 # Outro
 It was a mouthful. Quite a bit has happened. What are the things that you've noticed?
