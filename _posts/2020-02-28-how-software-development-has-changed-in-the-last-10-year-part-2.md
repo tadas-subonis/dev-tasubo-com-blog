@@ -285,13 +285,8 @@ domain model (I was certainly used to be guilty of this).
 # Outro
 I feel that at this point it's already quite a bit 
 for the reader and it's quite tiring to write up everything thoughtfully.
-I still haven't touched topics such as:
- * frontend development
- * devops
- * data engineering
- * machine learning
-
- which could be interesting to the reader but I am going to leave them out.
+I haven't touched topics such as frontend development or DevOps 
+which could be interesting.
 
  I hope that some of the engineers are going to relate to my experience and
  that maybe some of you are going to find this helpful (all those links and tips :) ).
