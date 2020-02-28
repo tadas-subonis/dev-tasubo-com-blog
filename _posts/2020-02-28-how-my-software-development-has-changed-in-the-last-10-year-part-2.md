@@ -68,11 +68,11 @@ the problem.
 Most likely, your code is gonna be written once and read many many times. 
 
 Code Conventions for the [Java Programming Language](https://www.oracle.com/technetwork/java/javase/documentation/codeconventions-139411.html), have this written:
-```text
- - 80% of the lifetime cost of a piece of software goes to maintenance.
- - Hardly any software is maintained for its whole life by the original author.
- - Code conventions improve the readability of the software, allowing engineers to understand new code more quickly and thoroughly.
-```
+
+> * 80% of the lifetime cost of a piece of software goes to maintenance.
+> * Hardly any software is maintained for its whole life by the original author.
+> * Code conventions improve the readability of the software, allowing engineers to understand new code more quickly and thoroughly.
+
 So do not skimp on the proper structure,
 variable and function naming.
 
