@@ -21,8 +21,30 @@ adhere to, that would be "just make it simple". Make simple everything:
 your code, your CI, DevOps.
 
 
+I still remember that roughly ~10 years ago while I was still a poor PHP developer,
+I've written a horrific for-loop. That for-loop abused `for(;;)` structure
+to its limit but it was compact, included several logical statements and so on.
+
+Something like that (a sample from another project)
+```java
+for (int i = (dealer + 1) % players.size(); playerPositionCounter < players.size(); i = (i + 1) % players.size()) {
+    ...
+}
+```            
+
+but worse.
+
+Only after it was almost immediately
+rewritten by a senior developer, it became apparent how bad that was.
+The new code had more lines, some repeated code, but it was much simpler.
+The original code would have been impossible to understand in a week,
+and the new one would be easy to pick up right away even in a year.
+
+There is a lot of value in making your software simple.
+
 ## Design: Keep It Stupid Simple
-One important piece of advice that I can share is to not make code complicated. Make it easy to read.
+Today one important piece of advice that I try to push is to not make code complicated. 
+Make it easy to read.
 Make it easy to understand.
 
 I believe that all of the [SOLID](https://en.wikipedia.org/wiki/SOLID)
@@ -37,13 +59,25 @@ you can see right away that a simpler version ```paramC``` could be passed inste
 start following LoD (while we are here, I'll add a note that passing [Aggregate](https://www.martinfowler.com/bliki/DDD_Aggregate.html)
 is still OK).
 
-## Make it easy to read and understand
+In the end, I still sometimes find myself hard to follow this advice. Sometimes the problems
+being solved are really complex. But sometimes it just reflects my poor understanding of
+the problem.
+
+### Make it easy to read and understand
 
 Most likely, your code is gonna be written once and read many many times. 
+
+Code Conventions for the [Java Programming Language](https://www.oracle.com/technetwork/java/javase/documentation/codeconventions-139411.html), have this written:
+```text
+ - 80% of the lifetime cost of a piece of software goes to maintenance.
+ - Hardly any software is maintained for its whole life by the original author.
+ - Code conventions improve the readability of the software, allowing engineers to understand new code more quickly and thoroughly.
+```
 So do not skimp on the proper structure,
 variable and function naming.
 
-So instead of
+
+Instead of
 
 ```python
 elem = object[2]
@@ -254,6 +288,8 @@ or [Null-Object](https://sourcemaking.com/design_patterns/null_object).
 
 
 # My database is just a detail
+I used to start my system design with a database schema design. Tables, foreign-keys, some normalization
+and you get a solid database structure design that you can build your software for.
 
 After adopting DDD a while ago
 and after having deployed a system using [EventSourcing](https://martinfowler.com/eaaDev/EventSourcing.html) and 
