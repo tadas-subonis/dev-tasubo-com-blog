@@ -280,7 +280,7 @@ into a specific table that would act basically as a view?
 I am not saying that SQL is evil but people depend too much
 on the database capabilities. Quite often, they let the database centric
 mindset creep in and compromise their
-domain model (I was certainly used to be guilty of this).
+domain model (I certainly used to be guilty of this).
 
 # Outro
 I feel that at this point it's already quite a bit 
