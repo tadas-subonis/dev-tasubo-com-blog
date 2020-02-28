@@ -11,14 +11,13 @@ tags:
 modified_time: '2020-02-27'
 ---
 
-This is continuation of the first part but while in the later I've 
+This is a continuation of the first part but while in the later I've 
 focused more on the whole industry, this time I'll try to reflect
-on how my own software development practices changed overtime.
+on how my own software development practices changed over time.
 
 If I had to point out one common pattern that I _try_ to 
 adhere to, that would be "just make it simple". Make simple everything:
-your code, your CI, DevOps. You can't be bother by worrying over
-every little thing.
+your code, your CI, DevOps.
 
 
 ## Design: Keep It Stupid Simple
@@ -39,7 +38,8 @@ is still OK).
 
 ## Make it easy to read and understand
 
-Most likely, your code is gonna be written once and read many many times. So do not skimp on proper structure,
+Most likely, your code is gonna be written once and read many many times. 
+So do not skimp on the proper structure,
 variable and function naming.
 
 So instead of
@@ -59,7 +59,7 @@ Unless it's a scientific or a well-defined domain shorthand for a variable (like
 ## Premature Design
 I think I've learned to stay away from premature abstractions. I'll expand on prototyping 
 later but [premature optimization](https://wiki.c2.com/?PrematureOptimization)
-is root of all evil. I believe this holds true for software design as well.
+is the root of all evil. I believe this holds true for software design as well.
 
 You have to understand that before you start coding and get your hands dirty (with code and business knowledge)
 you are not qualified to make sound design decisions. So instead of shooting yourself in the foot, leave yourself
@@ -71,8 +71,8 @@ that will be used in many different places so it's natural to get it extracted. 
 that guides some other thing. Things are not so obvious in these cases and straightforward deduplication will
 turn out to be a pain in the ass to maintain as you will start adding some boolean flags and parameters.
 
-Some code might appear to do the same initially but later you will find that actually the process is different and 
-unique. However, now you are stuck with "generalized" solution that isn't general nor easy to work with.
+Some code might appear to do the same initially but later you will find that actually, the process is different and 
+unique. However, now you are stuck with a "generalized" solution that isn't general nor easy to work with.
 
 Quite often people go really crazy with **extends** and generics only to wind up with a code that's 
 impossible to work with and doesn't bear any similarity to the domain.
@@ -92,7 +92,7 @@ They can get complex really fast if you don't keep them in check. You might say 
 collections library. I can't do without generics!". That's a fair use case - go ahead. 
 However, if you are in the process of writing some general
 data abstraction layer that "can be used by other teams as well", I have bad news for you. You gonna be lucky if actually anybody else
-besides you reads that code and there is no need to commit to generics if you can avoid them.
+besides you read that code and there is no need to commit to generics if you can avoid them.
 
 In a nutshell, you don't really want to end up with something like this:
 
@@ -159,7 +159,7 @@ result of making a test pass, but something not far from that.
 
 First of all, whenever I am building APIs, I just write the resulting API
 interface in the test in the way I would like to use it in a real program.
-This way you get to play around with the result, before the actual code is designed.
+This way you get to play around with the result before the actual code is designed.
 
 After you end up with the code that would make you happy to use, you just autocomplete
 and fill in the
@@ -175,12 +175,12 @@ different components of the system. In the end, instead of your regular pyramid,
 ![Tests](/assets/images/tests.png)
 
 In a regular pyramid, most of the code ends up testing the implementation instead
-of the behavior. However, I am not completely against unit-testing as it has it's own
+of the behavior. However, I am not completely against unit-testing as it has its own
 place. Usually, all of the highly specialized and complex functions deserve to have
 unit tests (for example, email validation regexes :) ).
 
 ## Tests as documentation
-Whenever I write tests now, I describe the wanted behavior in the test (somebody call it
+Whenever I write tests now, I describe the wanted behavior in the test (somebody calls it
  [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)).
 It's rather straightforward. Instead of having
 
@@ -216,14 +216,15 @@ These days there are few excuses left not to have a proper testing environment w
 and *docker-compose*.
 
 ## Refactor often
-When there is a comprehensive test suite watching your back, it is extremely easy to refactor code. If tests aren't 
-overengineered and if they focus on the behavior, there shouldn't be any problems following through with 
+When there is a comprehensive test suite watching your back, it is extremely easy to refactor code. 
+If tests aren't 
+over-engineered and if they focus on the behavior, there shouldn't be any problems following through with 
 major refactorings.
 
-Making big refactorings with ease have some major quality benefits to the codebase. Before, I've claimed that you won't 
+Making big refactorings with ease has some major quality benefits to the codebase. Before, I've claimed that you won't 
 probably have enough domain expertise to design the system properly. But that is not a problem anymore as your design
-will evolve to match your ever increasing understanding of the domain. Less discrepancies between your code and
-domain ~ less bugs and easier maintenance.
+will evolve to match your ever-increasing understanding of the domain. Fewer discrepancies between your code and
+domain ~ fewer bugs and easier maintenance.
 
 # More OOP
 I've found myself using way more objects and classes. Every time there is a new concept, I try to introduce a class for it. 
@@ -255,20 +256,20 @@ or [Null-Object](https://sourcemaking.com/design_patterns/null_object).
 
 After adopting DDD a while ago
 and after having deployed a system using [EventSourcing](https://martinfowler.com/eaaDev/EventSourcing.html) and 
-[CQRS](https://martinfowler.com/bliki/CQRS.html), it made me realize that database
+[CQRS](https://martinfowler.com/bliki/CQRS.html), it made me realize that the database
 is just a detail. An important detail, but still - just a detail.
 
 These days database for me might as well be just a plain text file. It doesn't really matter. As all of the persistence 
 will be abstracted away by [Repositories](https://airbrake.io/blog/software-design/domain-driven-design).
 What only matters is that the state can be persisted and retrieved intact.
 
-Also, not every Object deserves it's own table 
+Also, not every Object deserves its own table 
 or collection, so it is important to decide what is a:
  * Value Object
  * Entity
  * Aggregate
 
-Usually only Aggregates deserve to have a Repository for persistence.
+Usually, only Aggregates deserve to have a Repository for persistence.
 
 If you feel that you couldn't live without advanced SQL queries, consider this:
 how much it would take to query aggregate(s) on/after write,
@@ -278,7 +279,7 @@ and dump (or not) it
 into a specific table that would act basically as a view?
 
 I am not saying that SQL is evil but people depend too much
-on the database capabilities. Quite often, they let the database centric
+on the database capabilities. Quite often, they let the database-centric
 mindset creep in and compromise their
 domain model (I certainly used to be guilty of this).
 
