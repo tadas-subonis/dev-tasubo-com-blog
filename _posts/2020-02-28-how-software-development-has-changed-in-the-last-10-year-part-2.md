@@ -11,7 +11,7 @@ tags:
 modified_time: '2020-02-28'
 ---
 
-This is a continuation of the [first part]({% post_url 2020-01-11-how-software-development-has-changed-in-the-last-10-years.md %})
+This is a continuation of the [first part]({% post_url 2020-01-11-how-software-development-has-changed-in-the-last-10-years %})
 but while in the later I've 
 focused more on the whole industry, this time I'll try to reflect
 on how my own software development practices changed over time.
