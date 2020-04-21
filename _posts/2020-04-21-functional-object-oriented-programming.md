@@ -106,7 +106,7 @@ function todos(state = [], action) {
   }
 }
 ```
-You get some data, you modify the data, and then you return it. Yes, it's functional. However, it also missing a domain "hints" on what is happening.
+You get some data, you modify the data, and then you return it. Yes, it's functional. However, it is also missing a domain "hints" on what is happening.
 
 ## Enter OOP
 Let's rework this JavaScript example a bit. I am a big fan of making implicit concepts explicit by defining them early and clearly. Let's start with the
