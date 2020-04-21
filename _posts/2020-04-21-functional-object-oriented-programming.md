@@ -198,10 +198,12 @@ public abstract class Person {
         return ImmutablePerson.copyOf(this).withName("you"); // copyOf() is noop in this case
     }
 }
+```
 
 
 ## Python
-Python since version 3.7 can provide similar means to work with immutable code:
+Python since version 3.7 can provide similar means to work with immutable code via [dataclasses](https://docs.python.org/3/library/dataclasses.html)
+ (or [attrs](https://www.attrs.org/en/stable/) before 3.7):
 
 ```python
 from dataclasses import dataclass, replace
