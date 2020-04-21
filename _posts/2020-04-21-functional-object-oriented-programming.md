@@ -182,7 +182,9 @@ ImmutablePerson me = ImmutablePerson.builder()
 
 While you can find lots of examples of how the object is updated using `with*` methods like
 ```java
-Person you = me.withName("you");
+if (somethingTrue)  {
+    Person you = me.withName("you");
+}
 ```
 
 that should be avoided and, in my opinion, you should go for OOP like descriptive methods:
