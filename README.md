@@ -2,6 +2,11 @@
 
 [Main URL](https://dev.tasubo.com/)
 
+## serve command
+```
+jekyll serve
+```
+
 ## Some junk
 
 ```

@@ -1,14 +1,11 @@
 ---
 layout: post
-title: Functional Object Oriented Programming
-date: '2020-04-21'
+title: Tests and design in software 
+date: '2020-04-24'
 author: Tadas Šubonis
 tags:
-- software
-- programming
-- immutable
-- oop
-- object oriented programming
+- testing
+- program design
 ---
 
 Due to strange reason lots of people take Object Oriented Programming and Functional Programming as
@@ -39,7 +36,7 @@ A few classical examples where such mutations can occur and how they can mess up
  modified while being persisted. Now you continue working with the modified data while you think that it is
  still the same at it was passed in - the results are unexpected.
 
- Unexpected modifications to the objects like that are a major pain in the ass and developers often choose 
+ Unexpected modifications to the objects like that are a major pain in the ass and developers of choose 
  to do some defensive programming to avoid that.
 
  In Python, it is quite common to find:
@@ -49,13 +46,13 @@ my_dict = dict(passed_in_dict)
 my_dict = passed_in_dict.copy()
  ```
 
- As we can see, there is clearly some value in following the functional approach here and making the
+ As we see, there is clearly some value in following the functional approach here and making the
  variables immutable.
 
 # Object Oriented Programming
 
 To me personally, one of the biggest benefits of Object Oriented Programming is the 
-communication framework that this paradigm provides.
+communication framework this paradigm provides.
 
 While R. C. Martin states that the core of OOP is
 
@@ -74,7 +71,7 @@ like you can't do that with Functional Languages - you can do basically the same
 won't be sure that you've found all methods/functions that can or are supposed to modify the data
 in one nice place (class).
 
-It's worth pointing out, that it doesn't mean that the code is OOP if you are using OOP language - mediocre developers often
+It's worth pointing out, that it doesn't mean the code is OOP if you are using OOP language - mediocre developers often
 throw out the concepts of encapsulation, cohesion, and low coupling through the window in OOP languages like Java or C#.
 
 # Immutable Object Oriented Programming
@@ -106,7 +103,7 @@ function todos(state = [], action) {
   }
 }
 ```
-You get some data, you modify the data, and then you return it. Yes, it's functional. However, it is also missing domain "hints" on what is happening.
+You get some data, you modify the data, and then you return it. Yes, it's functional. However, it is also missing a domain "hints" on what is happening.
 
 ## Enter OOP
 Let's rework this JavaScript example a bit. I am a big fan of making implicit concepts explicit by defining them early and clearly. Let's start with the
@@ -159,20 +156,10 @@ function todos(state = new State(), action) {
 }
 ```
 
-which is much more readable and clearly communicates what is happening in the code. (*Warning: I haven't run this
+which is much more readable and clearly communicates what is happening in the code. Warning: I haven't run this
 code through the interpreter so it might be that it doesn't actually work but I assume that the idea 
-is clear from the code provided above.*)
+is clear from the code provided above.
 
-You can take this one step further by acknowledging that the *State* can handle events:
-
-```javascript
-function todos(state = new State(), action) {
-    return state.handle(action)
-}
-```
-and do the dispatching to the method inside the *State* class. This becomes handy when you
-have several large states to track and you really want to find everything in one
-place.
 
 ## Java
 Java has a great library called [Immutables](https://immutables.github.io/) which makes
