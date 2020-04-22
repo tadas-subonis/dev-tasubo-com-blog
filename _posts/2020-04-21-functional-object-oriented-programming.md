@@ -197,7 +197,7 @@ if (somethingTrue)  {
 }
 ```
 
-that should be avoided and, in my opinion, you should go for OOP like descriptive methods:
+that should be avoided and, in my opinion, you should go for OOP-like descriptive methods:
 
 ```java
 @Value.Immutable
@@ -229,5 +229,5 @@ class Person:
 
 
 # Outro
-There is no need to make OOP and functional programming mutually exclusive as both paradigms ofter mutually 
-exclusive paradigms which can be combined to create robust and maintainable code.
+There is no need to make OOP and functional programming mutually exclusive as both paradigms offer mutually 
+exclusive ways to improve your code. Both can be combined to create a robust and maintainable code.
