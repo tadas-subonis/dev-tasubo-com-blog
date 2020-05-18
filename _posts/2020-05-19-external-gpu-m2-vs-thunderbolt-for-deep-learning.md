@@ -14,7 +14,7 @@ tags:
 # Intro
 A while ago I've wanted to bump up non-existing gaming and deep learning capabilities of [my workstation](#my-workstation).
 Since it's a laptop, I've started looking into getting an external GPU. That's quite a convenient option -
-you get a still portable machine that can hook into a beefy GPU when you are working in your regular
+you get a portable machine that can hook into a beefy GPU when you are working in your regular
 place.
 
 This required quite a bit of research and the expected performance wasn't entirely clear (especially for 
@@ -25,7 +25,7 @@ Do not expect really sophisticated insights or benchmarks here but I hope that i
 build the intuition about the expected eGPU performance.
 
 # External GPUs
-The most common type of eGPU uses Thunderbolt 3. It's easy to connect  and its 40Gbps bandwidth provides
+Most commonly eGPUs use Thunderbolt 3. It's easy to connect  and its 40Gbps bandwidth provides
 a decent performance so you could actually make use of that GPU.
 
 There are [lots of eGPUs](https://egpu.io/best-egpu-buyers-guide/) available to choose from. I went with 
@@ -39,7 +39,7 @@ as it:
 The only trickery that I had to do here was to do a complete and clean uninstall of NVIDIA Quadro drivers using
 [DDU](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html) and then installing regular
 GeForce drivers. The only annoying thing after connecting Core X is that you can't have the internal-dedicated
-GPU (M1000M) running because that will cause the fans on the GPU that's inside eGPU to go on a full blast.
+GPU (M1000M) running because that will cause the fans on the GPU that's inside the eGPU to go on a full blast.
 
 Disabling M1000M using Device Manager and restarting the system helped here.
 
@@ -56,7 +56,7 @@ Also, it has a decent Thunderbolt 3 support and its PCI Express lane is not shar
 If you are interested to learn a bit more about the it, you can take a look at the review [here](https://www.notebookcheck.net/HP-ZBook-15-G3-Workstation-Review.162600.0.html).
 You might want to take a note, that the reviewed laptop has **Quadro M2000M** and can get **3820 score on Firestrike**.
 
-For the eGPU tests, I've used [Gigabyte Windforce RTX 2080 Ti](https://wccftech.com/review/gigabyte-geforce-rtx-2080-ti-gaming-oc-graphics-card-review/).
+As the star of the show, I've picked [Gigabyte Windforce RTX 2080 Ti](https://wccftech.com/review/gigabyte-geforce-rtx-2080-ti-gaming-oc-graphics-card-review/).
 
 # M2 Options
 Another option is to connect your eGPU to PCI-Express "directly" using something like [this](https://www.aliexpress.com/item/4000127931314.html).
@@ -64,12 +64,13 @@ Another option is to connect your eGPU to PCI-Express "directly" using something
 ![M2 + PSU](/assets/images/egpu-m2-thunderbolt/photos/m2_riser_psu.jpg "M2 Riser + PSU")
 
 I got this setup after I've mistakenly thought that my Core X got busted. In the end, the fault was at
-the active Thunderbolt cable. Hey, but I got to play around with the fancy M2-based setup.
+the active Thunderbolt cable that I bought separately.
+ Hey, but I got to play around with a fancy M2-based setup.
 
 You have to get an external PSU together with the riser above to make it work. Also, as you can probably guess
 it is not as convenient as a Thunderbolt option as you have to remove a bottom cover (or make some kind of other
 access) to the M2 connector on the motherboard. That's not something you want to plug and unplug everyday 
-but it's not really a big deal.
+but it's not really a big deal (it's easy to access the internals of this zBook).
 
 However, apparently this has some 
 [nice performance benefits](https://egpu.io/forums/builds/2015-15-dell-precision-7510-q-m1000m-6th4ch-gtx-1080-ti-32gbps-m2-adt-link-r43sg-win10-1803-nando4-compared-to-tb3-performance/) 
@@ -85,7 +86,8 @@ The whole M2 setup might look a bit strange (or cool) depending on how you judge
 Connecting eGPU via M2 is far from ideal experience. First of all, the default installation of drivers won't work and you will be greeted by error 43 after
 installing the drivers. You will find instructions [here](https://egpu.io/forums/expresscard-mpcie-m-2-adapters/script-nvidia-error43-fixer/) how to deal with that.
 
-Apparently, this happens because NVidia checks if M2 connector [is marked as hotplugable](https://egpu.io/error-43-fix-non-hotplug-mpciengffm-2-egpu-interfaces-nvidia-gtx10xx-cards/) or not.
+Apparently, this happens because NVidia checks if an 
+M2 connector [is marked as hotplugable](https://egpu.io/error-43-fix-non-hotplug-mpciengffm-2-egpu-interfaces-nvidia-gtx10xx-cards/) or not.
 
 Basically, if HWInfo shows something like 
 
@@ -97,14 +99,14 @@ instead of
 
 you will have to do run a magical script to fix that for you (I keep wondering how it works :/).
 
-Finally, you can't standby the system. I am not sure what happens but it would seems that there is an unexpected power issue when the system
+Finally, you can't put the system on standby (sleep). I am not sure what happens but it would seems that there is an unexpected power issue when the system
 resumes from standby and it panics when there is no GPU  powered/connected (yet). There is a chance that this might not happen if the eGPU is
 connected to M2 port that support hot plugging.
 
 ### Power Issues
 This specific ADT-Link device had [some trouble](https://egpu.io/forums/expresscard-mpcie-m-2-adapters/mpcieecngff-m2-resolving-detection-bootup-and-stability-problems/)
  running  RTX 2080 Ti. On some specific heavy loads (e.g. Firestrike or Deep Learning tasks)
-the eGPU would just disconnect and (sometimes) crash your system. Not cool. Apparently, this is a know problem and the mitigation is as follows
+the eGPU would just disconnect and (sometimes) crash your system. Not cool. Apparently, this is a known problem and the mitigation is as follows:
 
 > This can be either a PSU or video card stability issue with the factory settings which may be clocked beyond what the components can handle. For the latter, downclock your video card by 15% - core/mem/target power using > MSI Afterburner. If the problem persists, then swap your PSU for a known good one and test again.
 
@@ -118,7 +120,8 @@ I haven't tried another PSU or changing the power cords entirely.
 
 # Benchmarks
 I've tried collecting a set of benchmarks that would allow making some useful comparisons against other systems. However, since the current CPU of the system
-is a bit limpy compared to modern desktop workhorses, it mostly makes sense to compare these results between to see wh Thunderbolt and M2 connections
+is a bit limpy compared to modern desktop workhorses, it mostly makes sense to compare these results between to see what's the general
+performance of eGPU and what's the difference between Thunderbolt and M2 connections
 
 Also, I hope that Deep Learning practitioners are going to get some useful hints of what they can expect from an eGPU-based setup compared to proper desktop
 machines ([here](https://lambdalabs.com/blog/2080-ti-deep-learning-benchmarks/) or [here](https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/)).
@@ -136,7 +139,7 @@ between TimeSpy benchmarks is not that high - ~7%;
 
 ![TimeSpy Core X](/assets/images/egpu-m2-thunderbolt/time_spy_core_x.png "TimeSpy Core X")
 
-However, overall, it is an extremely sweet improvement over M1000M because I am getting **~15k scores instead 
+However, overall, it is an extremely sweet improvement over M1000M because I am getting **~15k Firestrike scores instead 
 of 3820** (M2000M - unfortunately I have not made any benchmarks using my own M1000M).
 
 ### 3Dmark M2
@@ -152,6 +155,16 @@ You can also see that M2 can perform up to 20% faster compared (comparing Graphi
 ![Thunderbolt M2](/assets/images/egpu-m2-thunderbolt/thunderbolt_vs_m2.png "Thunderbolt M2")
 
 
+
+## 4K
+In case you are interested in the performance of 4K:
+
+![4K](/assets/images/egpu-m2-thunderbolt/4k.png "4K")
+
+You can see that the downclocking makes M2 perform worse than regular-clocked GPU via Thunderbolt. If not for those power issues,
+M2 would probably perform here better too.
+
+
 ### Superposition and Kombustor
 I've also made some runs using Superposition and Kombustor if somebody were to look for those:
 
@@ -162,18 +175,13 @@ between TimeSpy benchmarks is not that high - ~7%;
 
 ![Benchmarks M2](/assets/images/egpu-m2-thunderbolt/other_benchmarks_m2.png "Benchmarks M2")
 
-## 4K
-In case you are interested in the performance of 4K:
-
-![4K](/assets/images/egpu-m2-thunderbolt/4k.png "4K")
-
-You can see that the downclocking makes M2 perform worse than Thunderbolt. If not for those power issues,
-M2 would probably perform here better too.
 
 ## AI Benchmark
 There aren't many options to choose from when benchmarking Deep Learning libraries. One quite decent option 
-is [AI Benchmark](http://ai-benchmark.com/alpha.html). The test runs on Tensorflow 1.x or Tensorflow 2.x and 
-basically test the inference and training speed of the most popular neural network architectures.
+that I've found
+is [AI Benchmark](http://ai-benchmark.com/alpha.html). The test runs using either
+Tensorflow 1.x or Tensorflow 2.x and 
+basically tests the inference and training speed of the most popular neural network architectures.
 
 I wasn't able to run the full testsuite on non-downclocked M2 but the initial runs might give some insight:
 
@@ -184,7 +192,8 @@ Overall score comparison for the downclocked version (so the test would complete
 ![AI Benchmark](/assets/images/egpu-m2-thunderbolt/ai_benchmark_scores.png "AI Benchmark")
 
 If you were to compare that with a [public ranking](http://ai-benchmark.com/ranking_cpus_and_gpus.html), you would
-see that using my system we are getting a petty ~20k scores instead of 32k that some people have reported.
+see that using my system we are getting a petty ~20k scores instead of 32k that some people have reported. The highest
+scores I got were **22k using non-downclocked GPU via Core X and internal screen** and **22.8k using downclocked GPU via M2 and internal screen**.
 
 
 In most of the cases for individual tests of AI Benchmark I've found that the performance is similar
@@ -200,7 +209,7 @@ I've also wanted to test some PyTorch code as well because that's the framework 
 not find a decent testing framework so I've run [pytorch-examples](https://github.com/pytorch/examples).
 
 For most of the examples it was quite difficult to get the data or I've ran into other issues while testing (like forgetting to
-use `--cuda` :( ). In the end, I've managed to procure benchmarks for MNIST and LSTM language model examples. The results can be
+use `--cuda` :( ). In the end, I've managed to procure benchmarks for MNIST and LSTM language model (5 epochs) examples. The results can be
 seen below:
 
 ![PyTorch Core X](/assets/images/egpu-m2-thunderbolt/pytorch_core_x.png "PyTorch Core X")
