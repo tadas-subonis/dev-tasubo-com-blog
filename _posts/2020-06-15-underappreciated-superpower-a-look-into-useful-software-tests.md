@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Underappreciated Superpower: A look into useful testing'
+title: 'Underappreciated Superpower: a look into useful software tests'
 date: '2020-06-14'
 author: Tadas Šubonis
 tags:
