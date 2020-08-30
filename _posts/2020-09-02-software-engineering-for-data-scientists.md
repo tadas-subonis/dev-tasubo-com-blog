@@ -304,6 +304,40 @@ items = map(clean_text(str.lower), items)
 
 This is also a perfect way to create configurable functions.
 
+### Better composition examples
+In the example above, we could move the text_processor to the pipeline itself:
+
+```python
+def clean_text(text):
+    text = text[:10]
+    return text
+
+items = map(clean_text, items)
+items = map(str.lower, items)
+```
+
+so a better example would be a randomizing post-processing function, to, let's say, augment 
+text examples for your neural network. We will make this augment function configurable,
+so the users of the function can choose the possible augmentations:
+
+```python
+import random
+
+def clean_text(text):
+    text = text[:10]
+    return text
+
+def augment(augmentations):
+    def step(text):
+        augmentation = random.choice(augmentations)
+        return augmentation(text)
+    return step
+
+items = map(clean_text, items)
+items = map(augment([noop, str.lower, str.upper]), items)
+```
+
+
 # Functional IF
 
 Often, I get to see functions that look something like this:
