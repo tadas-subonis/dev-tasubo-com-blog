@@ -2,6 +2,7 @@
 layout: post
 title: Functional Programming for Data Scientists
 author: Tadas Šubonis
+date: '2020-09-02'
 tags:
  - tag
  - draft
