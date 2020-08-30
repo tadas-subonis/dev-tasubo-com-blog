@@ -8,12 +8,12 @@ tags:
  - draft
 ---
 
-During my years as a software engineer I got exposed to more and more
+During my years as a software engineer, I got exposed to more and more
 data-based projects where data engineering and model research were
 major aspects of the system.
 
-Over time, one main pattern became apparent: functional programming
-paradigm is help a lot on data oriented systems.
+Over time, one main pattern became apparent: the functional programming
+paradigm helps a lot when working with data-oriented systems.
 
 For a regular data scientist or a data engineer, they will be quite familiar
 with ETL (Extract, Transform, Load) pipelines. However, not all data scientists
@@ -35,10 +35,10 @@ and
 
 Or, according to [Wikipedia](https://en.wikipedia.org/wiki/Functional_programming):
 
->In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions. It is a declarative programming paradigm in which function definitions are trees of expressions that each return a value, rather than a sequence of imperative statements which change the state of the program.
+>In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions. It is a declarative programming paradigm in which function definitions are trees of expressions that each return a value, rather than a sequence of imperative statements that change the state of the program.
 
 
-In other words, you can assign variables new values, but existing values cannot change.
+In other words, you can assign variables a new value, but existing values cannot change.
 
 A few examples:
 ```python
@@ -73,7 +73,7 @@ def my_function(input_dict):
 
 
 This has a few important implications:
- - if you receive a value, you can be sure that it won't change mid-processing because it was modified
+ - if you receive value, you can be sure that it won't change mid-processing because it was modified
  in another thread
  - as a function caller, you can be sure that after calling the function the passed in arguments
  haven't changed and you can use them the same way before calling the function
@@ -81,18 +81,19 @@ This has a few important implications:
  the original value and return results in the new one
 
 As you can see, it reduces surprises and eases the cognitional context load of the programmer as
-we do not really need to worry about the state of the entire program but just local state (input)
+we do not  need to worry about the state of the entire program but just the 
+local state (input)
 of the function.
 
-It also there is common expectation that if you call the function with the same arguments, it will
+There is a common expectation that if you call the function with the same arguments, it will
 return the same results. However, that is not always the case:
  - reading the same file, with the same filename, might produce a different result if the file was updated
  - calling function that returns current time should return different time during each call
  - etc
 
-These edge cases usually creep in from environment (boundaries with the environment) and a keen
-functional practioner could actually work around these by introducing Environment or Context
-states but for practical purposes in is more work than it is worth.
+These edge cases usually creep in from the environment (boundaries with the environment) and a keen
+functional practitioner could work around these by introducing Environment or Context
+states but for practical purposes it is more work than it is worth.
 
 
 The implications above often lead to code structure that looks like this:
@@ -186,7 +187,7 @@ without traversing the hierarchy up and investigating all the other calls.
 
 # So what?
 
-Now, we now how to write nice "functional" functions. What can we do with that?
+Now, we now know how to write nice "functional" functions. What can we do with that?
 
 In the examples above we had a pipeline that processed just a single value. In most of the cases,
 we operate on the lists. Those lists can be anything:
@@ -196,7 +197,7 @@ we operate on the lists. Those lists can be anything:
  - etc
 
 but we usually get some kind of list first. In Python, it means a specific type of array-like collection
-but in reality we just need some kind of Iterable.
+but in reality, we just need some kind of Iterable.
 
 
 ## Enter the map
@@ -265,7 +266,7 @@ type.
 
 Then, when the time comes, `reduce` will call our supplied function to accumulate the stream of values
 into a single value (it will get _reduced_). 
-For developer who know their [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming), 
+For developers who know their [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming), 
 it is the same as a [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern).
 
 We can use the same idea in our functions as well. For example, let's say we are writing a 
@@ -390,7 +391,7 @@ Let's handle IFs first. I would say there are two types of ifs:
  - the ones that become `map`s
 
 If I can extract some `if` as a `filter`, that's always a win, because 
-there are going to be less items downstream:
+there are going to be fewer items downstream:
 
 ```python
 from itertools import starmap
@@ -481,8 +482,8 @@ In this article, I've tried to outline the most important principles (in my opin
 developers who are less experienced with Functional Programming could understand and would start
 applying in their code to improve its quality. 
 
-This is especially relevant to data oriented developers, where Functional Programming paradigm
-will help immensely to avoid unmaintainable mess.
+This is especially relevant to data-oriented developers, where Functional the Programming paradigm
+will help immensely to avoid an unmaintainable mess.
 
 I haven't properly touched the part where experienced FP developer would start composing functions
 but that's for later. Also, I am planning to cover certain "recipes" later.
