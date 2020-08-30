@@ -260,7 +260,7 @@ I've just used (introduced?) an extremely important concept in FP -  function co
 a special mention.
 
 In the part `reduce(accumulate, ...)` you can see that we a calling function, that takes another
-function as the argument. To be used in inside `reduce` the `accumulate` function has to satisfy 
+function as the argument. To be used inside `reduce` the `accumulate` function has to satisfy 
 the same signature requirements (if such a thing exists in Python at all...) - it takes two arguments
 and returns a single value. The first argument and the return value should be (preferably) of the same 
 type.
@@ -319,7 +319,7 @@ items = map(clean_text, items)
 items = map(str.lower, items)
 ```
 
-so a better example would be a randomizing post-processing function, to, let's say, augment 
+so a better example would be a randomizing post-processing function, to augment 
 text examples for your neural network. We will make this augment function configurable,
 so the users of the function can choose the possible augmentations:
 
