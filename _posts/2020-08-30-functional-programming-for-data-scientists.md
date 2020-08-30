@@ -459,6 +459,64 @@ items = filter(is_x_empty, items) # this becomes basically a all or nothing swit
 items = map(create_counting(x), items)
 ```
 
+# Use classes
+
+Using classes and or [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming) in the Functional Programming deserves [a separate post](/2020/04/functional-object-oriented-programming.html), 
+but there are a few short notes that I would like to make here.
+
+Building FP-based systems or pipelines, there will functions functions
+that take a few arguments, and return multiple values (tuple). For example,
+
+```python
+def fun(a, b, c, d):
+    return a, b, c, d + 2, a + 3
+
+# or
+
+def fun(items_dict):
+    return items_dict['a'] * 2, items_dict, items_dict['b']
+```
+
+this is a messy way to structure input and output. It is brittle and hard to maintain. Also,
+you will end up abusing [starmap](https://docs.python.org/3.8/library/itertools.html#itertools.starmap)
+quite a bit.
+
+In cases like these, when you have to receive more than two values as an argument, 
+or return more than two values, I recommend using [dataclasses](https://docs.python.org/3/library/dataclasses.html).
+
+For example:
+
+```python
+from dataclasses import dataclass, field, replace
+
+@dataclass
+class Item:
+    name: str
+    price: float
+    quantity: int = 0
+
+    def total(self):
+        return self.price * self.quantity
+
+x = Item("Apple", 1.00)
+
+def assign_quantity(x: Item):
+    return replace(x, quantity=10)
+
+items = map(assign_quantity, items)
+items = map(Item.total, items)
+total_cost = sum(items)
+```
+
+Using _dataclasses_ you get a few benefits:
+ - it is easy to create an updated value using [replace](https://docs.python.org/3/library/dataclasses.html#dataclasses.replace), 
+without modifying the current value
+ - classes become a natural place to keep class-specific methods
+ - functions/methods that work on classes are easy to update and interfaces won't break as often
+
+If you can't use dataclasses because you are stuck on the old version of Python (pre 3.7),
+there is [attrs](https://www.attrs.org/en/stable/#) project that does the all of the above and more.
+
 
 # Pushing it further
 
