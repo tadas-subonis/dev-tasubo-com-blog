@@ -47,7 +47,7 @@ A few examples:
 my_var = {'c': 'value'}
 my_var['b'] = 'new_value'
 # or 
-my_var['c'] = 'new_value
+my_var['c'] = 'new_value'
 
 # GOOD
 
