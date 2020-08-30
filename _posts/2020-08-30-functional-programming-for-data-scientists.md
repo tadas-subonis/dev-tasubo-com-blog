@@ -2,10 +2,11 @@
 layout: post
 title: Functional Programming for Data Scientists
 author: Tadas Šubonis
-date: '2020-09-02'
+date: '2020-08-30'
 tags:
- - tag
- - draft
+ - functional programming
+ - software development
+ - data engineering
 ---
 
 During my years as a software engineer, I got exposed to more and more
