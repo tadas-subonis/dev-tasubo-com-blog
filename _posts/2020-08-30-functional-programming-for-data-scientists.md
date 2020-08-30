@@ -546,3 +546,5 @@ will help immensely to avoid an unmaintainable mess.
 
 I haven't properly touched the part where experienced FP developer would start composing functions
 but that's for later. Also, I am planning to cover certain "recipes" later.
+
+For the keen learners, I can recommend  [https://www.coursera.org/learn/progfun1/home/welcome](https://www.coursera.org/learn/progfun1/home/welcome) course.
