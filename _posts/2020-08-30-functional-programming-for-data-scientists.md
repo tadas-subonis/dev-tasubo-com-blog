@@ -19,7 +19,7 @@ paradigm helps a lot when working with data-oriented systems.
 For a regular data scientist or a data engineer, they will be quite familiar
 with ETL (Extract, Transform, Load) pipelines. However, not all data scientists
 and data engineers are familiar with functional programming and its
-benefits. That's especially true if they are junior developers.
+benefits.
 
 # Functional Programming
 
