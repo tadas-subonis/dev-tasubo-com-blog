@@ -133,7 +133,7 @@ def my_function_one(b):
 
 def another_call(b):
     #...
-    c = another_call(c)
+    c = my_function_one(c)
     return c
 
 def third_call(b):
