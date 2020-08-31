@@ -76,7 +76,7 @@ def my_function(input_dict):
 This has a few important implications:
  - if you receive value, you can be sure that it won't change mid-processing because it was modified
  in another thread
- - as a function caller, you can be sure that after calling the function the passed in arguments
+ - as a function caller, you can be sure that after calling the function passed in arguments
  haven't changed and you can use them the same way before calling the function
  - as a function writer, you can do whatever you want with the data, as long as you do not change
  the original value and return results in the new one
@@ -220,7 +220,7 @@ x = map(calculate, x)
 ## Reduce it
 
 What if we want to get a single value as a result? Functional programming toolset has 
-this function called `reduce`:
+this function called [reduce](https://docs.python.org/3/library/functools.html#functools.reduce):
 
 ```python
 from functools import reduce
@@ -231,7 +231,7 @@ x = reduce(lambda c, i: c + i, x)
 ```
 
 Actually, `reduce(lambda c, i: c + i, x)` is the same as
-`reduce(operators.add, x)` is equivalent to `sum(x)` on Python,
+`reduce(operators.add, x)`. It is also equivalent to `sum(x)` on Python,
 so the same above could be expressed as:
 
 ```python
@@ -259,7 +259,7 @@ average = x[1] / x[0]
 I've just used (introduced?) an extremely important concept in FP -  function composition. It deserves
 a special mention.
 
-In the part `reduce(accumulate, ...)` you can see that we a calling function, that takes another
+In the part `reduce(accumulate, ...)` you can see that we are calling a function, that takes another
 function as the argument. To be used inside `reduce` the `accumulate` function has to satisfy 
 the same signature requirements (if such a thing exists in Python at all...) - it takes two arguments
 and returns a single value. The first argument and the return value should be (preferably) of the same 
@@ -433,7 +433,7 @@ items = starmap(count_it, items)
 ```
 
 # More functions
-When you start building flows like this, you will soon realize that there are many tricks, you
+When you start building flows like this, you will soon realize that there are many tricks you
 can do by composing function and creating context-local utility functions
 
 For example, let's say `x` is now a part of some context. We could rewrite the program like
@@ -464,8 +464,8 @@ items = map(create_counting(x), items)
 Using classes and or [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming) in the Functional Programming deserves [a separate post](/2020/04/functional-object-oriented-programming.html), 
 but there are a few short notes that I would like to make here.
 
-Building FP-based systems or pipelines, there will functions functions
-that take a few arguments, and return multiple values (tuple). For example,
+Building FP-based systems or pipelines, there will be functions
+that  several arguments and return multiple values (tuple). For example,
 
 ```python
 def fun(a, b, c, d):
@@ -509,7 +509,8 @@ total_cost = sum(items)
 ```
 
 Using _dataclasses_ you get a few benefits:
- - it is easy to create an updated value using [replace](https://docs.python.org/3/library/dataclasses.html#dataclasses.replace), 
+ - it is easy to create a new and 
+updated value (object) using [replace](https://docs.python.org/3/library/dataclasses.html#dataclasses.replace), 
 without modifying the current value
  - classes become a natural place to keep class-specific methods
  - functions/methods that work on classes are easy to update and interfaces won't break as often
@@ -541,10 +542,11 @@ In this article, I've tried to outline the most important principles (in my opin
 developers who are less experienced with Functional Programming could understand and would start
 applying in their code to improve its quality. 
 
-This is especially relevant to data-oriented developers, where Functional the Programming paradigm
+This is especially relevant to data-oriented developers, where the Functional Programming paradigm
 will help immensely to avoid an unmaintainable mess.
 
 I haven't properly touched the part where experienced FP developer would start composing functions
 but that's for later. Also, I am planning to cover certain "recipes" later.
 
-For the keen learners, I can recommend  [https://www.coursera.org/learn/progfun1/home/welcome](https://www.coursera.org/learn/progfun1/home/welcome) course.
+For the keen learners, I can recommend  [https://www.coursera.org/learn/progfun1/home/welcome](https://www.coursera.org/learn/progfun1/home/welcome) 
+course which covers FP in more detail and better than me.
