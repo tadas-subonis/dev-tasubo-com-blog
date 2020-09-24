@@ -236,7 +236,7 @@ As a <type of user>, I want <some goal> so that <some reason>.
 
 It will put us in the mindset of "what do we want to achieve". So let's say we would
 like to create "a login functionality so I could be identified as a returning
-user and I could browser previously saved products".
+user and I could browse previously saved products".
 
 This would cover multiple aspects of the system but now let's focus on the login itself.
 Since we would like to have means for users to login, we could just say that:
