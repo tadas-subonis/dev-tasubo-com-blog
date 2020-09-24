@@ -40,7 +40,7 @@ Writing tests is the best way to describe what the code should do. It can be
 enforced automatically and effortlessly after it's checked into your CI.
 
 Also, please pay attention to the fact that I am not talking about the tests
-as a way to ensure that there are no bugs. Tests can really give you any guarantees here.
+as a way to ensure that there are no bugs. Tests can't really give you any guarantees here.
 
 # First-class citizen
 Due to the reasons above, I am certain that tests (end-to-end, integration, unit, etc) deserve
@@ -95,7 +95,7 @@ isn't ideal and it will make the next developer
 
 
 # Structuring tests
-One of the most useful rules is that you should always try following is
+One of the most useful rules, that you should always try following, is
 [packaging by feature](http://www.javapractices.com/topic/TopicAction.do?Id=205) .
 
 It would be really strange to read documentation in a way where it describes
@@ -186,7 +186,9 @@ assert_that(user['id'], instance_of(str))
 ```
 and that's pretty much it.
 
-Hardcore TDD and XP developers will loathe this advice, but do not worry about any tests
+Hardcore [TDD](https://en.wikipedia.org/wiki/Test-driven_developmen) 
+and [XP](https://en.wikipedia.org/wiki/Extreme_programming)
+ developers will loathe this advice, but do not worry about any tests
 for any other part of the system just yet. Just implement everything using
 a bit of common sense to make the test above work.
 
@@ -222,6 +224,17 @@ This is also a perfect opportunity to create missing tests for the *Repository* 
 data access layer) that I said you 
 shouldn't worry about.
 
+# Naming tests
+As they say, [naming things](https://martinfowler.com/bliki/TwoHardThings.html) is one of the two hardest things in CS.
+But actually naming tests well is not that hard. There are a few simple rules that you can follow
+that will make the names of the tests descriptive and useful.
+
+A great way to start, is to think about [Scrum-like story](https://www.atlassian.com/agile/project-management/user-stories):
+```
+As a <type of user>, I want <some goal> so that <some reason>.
+```
+
+
 # UI Testing
 Testing User Interfaces is still a pain in the ass. Lots of frameworks for UIs do not take
 testing seriously and thus tooling often suffers. If that's the case for the UI framework of your 
@@ -231,8 +244,10 @@ Also, quite often, if testing is an afterthought, concepts such as Inversion-of-
 be alien to the framework and you will have trouble mocking out non-UI dependencies.
 
 If it's a trivial project, it's often easier just to code it an forget. However, if it's gonna be a >1
-developer-month project it's always to invest extra time to set up the testing infrastructure. In
-the end, you can always run the application and interact with it at the OS level. Mocking out dependencies
+developer-month project it's always worth
+to invest extra time to set up the testing infrastructure. In
+the end, you can always run the application and interact with it at the OS level using
+some automation tools like [UiPath](https://www.uipath.com/). Mocking out dependencies
 could be done with environment variables and a few ifs.
 
 Getting UI right is often a hard task and never should be taken lightly. Also, it is likely that the UI
@@ -258,7 +273,7 @@ you can't really break stuff.
 Finally, a properly designed software (after all of those refactorings) makes it really easy
 to introduce new features. That's a business-oriented win right here.
 
-Also, properly named structured and named tests can act as documentation after doing some
+Also, properly structured and named tests can act as documentation after doing some
 post-processing.
 
 # Outro
