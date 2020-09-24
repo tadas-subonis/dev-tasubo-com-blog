@@ -234,6 +234,49 @@ A great way to start, is to think about [Scrum-like story](https://www.atlassian
 As a <type of user>, I want <some goal> so that <some reason>.
 ```
 
+It will put us in the mindset of "what do we want to achieve". So let's say we would
+like to create "a login functionality so I could be identified as a returning
+user and I could browser previously saved products".
+
+This would cover multiple aspects of the system but now let's focus on the login itself.
+Since we would like to have means for users to login, we could just say that:
+
+```java
+@Test
+void user_should_be_able_to_login_using_rest_api() {
+...
+}
+```
+
+It doesn't really matter how you name the class but I usually use classes as a grouping for major
+features. So here, it could look like:
+
+```java
+class LoginFeature {
+    @Test
+    void user_should_be_able_to_login_using_rest_api() {
+        ...
+    }
+}
+```
+
+We might realize that there is a specific detail that we have missed, so later we might 
+describe that as well:
+
+```java
+@Test
+void user_should_get_a_valid_auth_token_upon_request() {
+...
+}
+```
+
+And that's it. Tests like these will also act as documentation - just collect the names 
+and dump them into a file. It will contain the description of the ACTUAL behavior of the system.
+
+Also, whenever a test breaks, you won't have to guess why it checks (asserts) for 
+some specific value of the string. You will be able read what was the indented
+behavior and you will get the big picture.
+
 
 # UI Testing
 Testing User Interfaces is still a pain in the ass. Lots of frameworks for UIs do not take
