@@ -12,9 +12,13 @@ blogger_id: tag:blogger.com,1999:blog-8984970032050788710.post-82365505868046688
 blogger_orig_url: http://dev.tasubo.com/2013/08/transactional-scripts-aka-services-and.html
 ---
 
-This post has been compiling in my head for some time now. I think I created entry in blogger with such title back in February. Probably the thing that was keeping me off this work was the amount of detailed explanations and code examples to prepare. Also, topic isn't really that interesting for myself now since I had multiple discussions and arguments on this subject. However, I still see people that often falls in the trap of "Transactional scripts" so I decided that it is probably worth writing about this so more programmers would be able to identify flaws in their design and improve.  
+I often see people falling for the trap of "Transactional scripts" so I decided that it is probably worth 
+writing about this so more programmers would be able to identify flaws in their design and improve.  
 
-Let's start with [Transactional Scripts](http://martinfowler.com/eaaCatalog/transactionScript.html). What are they? I would 
+# Transactional Scripts
+Let's start with [Transactional Scripts](http://martinfowler.com/eaaCatalog/transactionScript.html). What are they? 
+
+I would 
 say that this is [Procedural Programming](http://en.wikipedia.org/wiki/Procedural_programming) 
 disguised as OOP. In practice, it looks something like this: you have a bunch of 
 objects that have only values but only few methods (probably setters and getters) and 
@@ -24,7 +28,6 @@ scenarios that hold your business logic but your "model" objects don't have any.
 
 Example for completeness:  
 
-<div class="gistLoad" data-id="6268164">Loading...</div>
 {% highlight java %}
 
 class BasketAddService {
@@ -88,7 +91,6 @@ together. If some specific process is related to object, they will probably
 
 For comparison, let's take a look here:  
 
-<div class="gistLoad" data-id="6268160">Loading...</div>
 {% highlight java %}
 /**
  * Facade here is like entry point to our Domain Logic. In web applications it may
@@ -139,21 +141,24 @@ class Basket {
 {% endhighlight %}
 
 According to Fowler, using Transactional Scripts is justifiable for 
-small projects. For larger ones you want to 
-Domain Driven Design. Why is that? The problem with Transactional Scripts is that while 
+small projects. For larger ones you want to use
+Domain Driven Design.
+
+The problem with Transactional Scripts is that while 
 they are easy to start with, maintenance costs rumps up quite quickly when your 
 project size increases. I would say this happens due to distributed 
 logic among different parts of system - let's say you have special 
 "corporate" order type which needs to be executed using different rules than for 
-regular customer. You will end up writing all of that logic under separate 
+the regular customer. You will end up writing all of that logic under separate 
 Transactional Script that has to be incorporated into existing ones. 
-This may not be so trivial task when you have around 100 or more. 
+This may not be so trivial task when you have around 100 or more places to update.
+
 Additional flow might break existing scripts' functionality, 
 new script may not be able to reuse same code for other scripts since it's hard to 
 extract from current ones. 
 DDD'ish approach would probably solve the same problem using plain polymorphism.  
 
-Shorter version: it's a lot harder to apply [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))principles 
+It's a lot harder to apply [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))principles 
 while using Transactional Scripts. Also, these scripts tend to 
 have circular dependencies between each other for different modules. 
 Business logic isn't encapsulated by business entities.  
@@ -183,14 +188,15 @@ There is nice interpretation about orthogonality and [cohesion](http://en.wikipe
 "[The Pragmatic Programmer](http://pragprog.com/the-pragmatic-programmer)" book. Orthogonality in software 
 projects basically means that changing one piece of system won't impact another 
 one because they are "orthogonal" (independent) to each other. 
+
 What does cohesion have to do with this? Cohesion shows how much module or class depends on itself 
 to accomplish its task and how few other components it uses. Since Transactional Scripts approach 
 to handling business logic always results in low cohesion (classes will always heavily depend on other classes) 
 it basically means that your project in the end will be a lot harder to maintain than DDD'ish approach.  
 
 One may think that just using plain old good OO Design and SOLID principles would mitigate this 
-problem and this is totally true. But basically Domain Driven Design is the good practices 
-applied your business domain context :).  
+problem and this is totally true. But, basically, Domain Driven Design is good practices 
+applied in your business domain context :).  
 
 I hope I made my reasoning clear why do I prefer DDD approach to 
 tackling business logic and I hope it will help you to refine 
