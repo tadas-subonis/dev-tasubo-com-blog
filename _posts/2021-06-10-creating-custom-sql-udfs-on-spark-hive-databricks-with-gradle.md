@@ -144,7 +144,7 @@ spark-sql-udfs-starter-1.2-SNAPSHOT-all.jar
 
 Finally, we can upload the JAR to the FileStore (on [DBFS](https://docs.databricks.com/data/databricks-file-system.html)) 
 and
-use the following on Spark SQL (Databricks):
+use the following on Spark SQL (Databricks) to [create a function](https://docs.databricks.com/spark/latest/spark-sql/language-manual/sql-ref-syntax-ddl-create-function.html):
 
 ```sql
 %sql 
