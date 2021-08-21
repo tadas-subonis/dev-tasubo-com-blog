@@ -1,0 +1,15 @@
+ - Strategy for having a great test coverage that matters
+ - Restful services
+ - API architecture
+ - tips and code advice for data scientists
+ - clean code summary
+ - delivering software quickly
+ - Tactical domain driven design intro
+ - GTO CFR Overview
+ - Linear Model in Pyro
+ - Counting Model in Pyro
+ - Kubernetes cheat sheet
+ - Communicating data science work
+ - A plan for growth for data scientists
+ - Quick Sheet for Pandas and Jupyter
+ 
