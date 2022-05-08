@@ -1,2 +1,2 @@
-Copyright (c) Tadas Subonis
+Copyright (c) Tadas Subonis. All rights reserved.
 
