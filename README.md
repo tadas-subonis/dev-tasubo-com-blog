@@ -7,6 +7,13 @@
 jekyll serve
 ```
 
+## with bundle
+
+```
+bundle install
+bundle exec jekyll serve
+```
+
 ## Some junk
 
 ```
