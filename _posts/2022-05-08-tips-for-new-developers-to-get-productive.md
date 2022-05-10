@@ -21,8 +21,8 @@ To get some coding basics in order, you should do the following readings (multip
  * Use [package by feature](http://www.javapractices.com/topic/TopicAction.do?Id=205#:~:text=Package%2Dby%2Dfeature%20uses%20packages,with%20minimal%20coupling%20between%20packages.) - code grouping by layer doesn't really make sense from maintanability and business sense. 
  * [Don't use inheritance - use composition](https://python-patterns.guide/gang-of-four/composition-over-inheritance/). Most of the problems in OOP can be very efficiently and clearly expressed using interfaces and composition. Inheritance is unreadble, difficult to maintain, and update. Just don't use it.
  * Learn [immutable patterns](https://dev.tasubo.com/2020/04/functional-object-oriented-programming.html). You can do Object-Oriented programming with functional principles - these two concepts are orthogonal.
-  * [Immutables](https://immutables.github.io/) - Immutable objects for Java
-  * [Dataclasses](https://docs.python.org/3/library/dataclasses.html) - use `frozen=True` on Python Dataclasses
+   * [Immutables](https://immutables.github.io/) - Immutable objects for Java
+   * [Dataclasses](https://docs.python.org/3/library/dataclasses.html) - use `frozen=True` on Python Dataclasses
  * [Prematature optimization is evil](https://wiki.c2.com/?PrematureOptimization) - don't waste your time with your false opinions improving things that do not matter
 	
 	
