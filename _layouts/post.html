@@ -11,8 +11,8 @@ layout: default
 
 
 	<div class="divider"></div>
-
-	{{ content | toc }}
+	{% include toc.html html=content %}
+	{{ content }}
 	
 	{% if site.show_sharing_icons %}
 	{% include share_buttons.html %}
