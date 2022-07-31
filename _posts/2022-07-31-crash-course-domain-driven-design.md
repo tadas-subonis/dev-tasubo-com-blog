@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Crash course on Domain-Driven Design for juniors
+title: Crash course on Domain-Driven Design
 author: Tadas Šubonis
 date: '2022-07-31'
 tags:
@@ -11,50 +11,53 @@ tags:
 
 # Intro
 
-A goal of this write up is to introduce the main tools of domain-driven design to new developers 
+A goal of this write-up is to introduce the main tools of domain-driven design to new developers 
 so they can pick up the approach quickly.
 
-There are two big parts of domain-driven design: organizational (arguably more important) and
+There are two big parts of the domain-driven design: organizational (arguably more important) and
 tactical patterns for developers.
 
-This will focus on the latter as for junior and mid-level developers the techniques here can
+This will focus on the latter as for junior and mid-level developers the techniques 
+mentioned here can
 take the quality of their code to the next level. I would also argue that the developers
-can become substancially more productive if they do TDD.
+can become substantially  more productive if they do DDD.
 
 This post should be considered as a short intro and serious practitioners will want to 
 read the following books:
- - Domain Driven Design - tackling the heart of software complexity
- - Domain Driven Design Distilled 
- - Implementing Domain Driven Design
+ - Domain-Driven Design: Tackling Complexity in the Heart of Software by Eric Evans
+ - Domain Driven Design Distilled by Vaughn Vernon
+ - Implementing Domain Driven Design by Vaughn Vernon
 
-The "blue book" is a must read for all level engineers if they haven't done so. The "red book" would be
-more appriopriate for architect-level contributors. Finally, the distilled version is useful as a refresher
+The "blue book" is a must-read for all level engineers if they haven't done so. The "red book" would be
+more appropriate for architect-level contributors. Finally, the distilled version is useful as a refresher
 or as a review for more recent trends (like event sourcing).
 
 Note: I'll jump between different languages in my examples just to show that these concepts don't apply
-to some particular language.
+to some language in particular but as a more general system.
 
 # Organization aspect
 
-Let's start with organizational part as it's quite important but let's keep it short and coincise. There are
+Let's start with the organizational part as it's quite important but I'll keep it short as the focus
+of this post is to cover the technical bits. There are
 three main tools to be aware of:
 
 ## Ubiquitous language
 It's a way to ensure that everybody is speaking the same language. Developers, project managers, and domain experts.
-Create and define all terms on some wiki page so when somebody write a class "Post" you know what it means and that
+Create and define all terms on some wiki page so when somebody writes a class "Post" you know what it means exactly
+and that
 it isn't a "Blog" or something else.
 
 Helps immensely to get everybody on the same page.
 
 ## Bounded context
-It's basically a description of scope for what the team is responsibe for. Which parts of programs, features, or
+It's a description of the scope for what the team is responsible for. Which parts of programs, features, or
 functionality some team will cover.
 
 ## Context Map
 This is useful for team leads and managers - it shows how different bounded contexts are connected and the connection
 interfaces (HTTP Rest Interface, Shared Database, etc) are defined.
 
-Great to understand a structure and responsibilities for bigger systems.
+Great to understand the structure and responsibilities of bigger systems.
 
 # Tactical developer patterns
 
@@ -64,12 +67,13 @@ that it is easier to understand and maintain.
 It helps to **create a better distinction between infrastructure and domain code**. 
 
 Quite often developers have a lot of trouble separating the core of the business code from something that's
-shaped by the environment you are coding in. The first one delivers business value, while the second one
-enables the delivery of it.
+shaped by the environment they are coding in. The first one delivers business value, while the second one
+enables the delivery of it. Distilling the first parts leads to easier maintenance and opens
+new paths for code re-use and generalization.
 
 ## Entities
 
-*Entity* is an object (or a class) that has an identity. As soon as you see an ID field on the object
+An *Entity* is an object (or a class) that has an identity. As soon as you see an ID field on the object
 it's a strong sign it's an entity.
 
 For example,
@@ -87,22 +91,22 @@ class Post {
 There is no need for you to use database-assigned IDs. Sometimes they are convenient and useful and sometimes they
 can get in a way.
 
-These days I am more of a fan of random [UUID](https://docs.python.org/3/library/uuid.html)s . And I am even
-a bigger fan of random uuids that are monotonically sorted by their timestamp or Universally Unique Lexicographically Sortable Identifiers (ULID). Examples:
- 1. [https://github.com/ulid/spec]
- 1. [https://github.com/ahawker/ulid]
- 1. [http://gh.peabody.io/uuidv6/]
+These days I am more of a fan of random [UUID](https://docs.python.org/3/library/uuid.html)s. And I am even
+a bigger fan of random UUIDs that are monotonically sorted by their timestamp or Universally Unique Lexicographically Sortable Identifiers (ULID). Examples:
+ 1. [https://github.com/ulid/spec](https://github.com/ulid/spec)
+ 1. [https://github.com/ahawker/ulid](https://github.com/ahawker/ulid])
+ 1. [http://gh.peabody.io/uuidv6/](http://gh.peabody.io/uuidv6/)
 
 These new ULIDs have a few nice properties:
  1. Creation timestamp is integrated within the ID itself
- 1. You can sort them by bytes and get the same order as by timestamp - this makes range queries easy and efficient
+ 1. You can sort them by bytes and get the same order as by timestamp - this makes [range queries](https://en.wikipedia.org/wiki/Range_query_(database)) easy and efficient
  1. There is no need to do centralized locking to generate an ID - a client can generate an ID by itself.
  1. The IDs are impossible to guess ("oh, my order ID is 123, so let's try entering in URL 122 to see if I can access data from some other customer")
- 1. Database doesn't need to support "AUTOINCREMENT UNIQUE etc" column types
+ 1. The database doesn't need to support "AUTOINCREMENT UNIQUE etc" column types
 
 ## Value Objects
 
-Value object is a simple class that contains the info but isn't necesseraly distinguishable by some identifier.
+A *Value object* is a simple class that contains the information but isn't necessarily  distinguishable by some identifier.
 
 ```typescript
 class Weather {
@@ -112,21 +116,21 @@ class Weather {
 }
 ```
 
-Event if you decide to save this object in the database for some timeseries logging/analysis purposes
- and you add some `_id` field it's still a value object - the identify
+Even if you decide to save this object in the database for some time series logging/analysis purposes
+ and you add some `_id` field it's still a value object - the identity
 of this piece of data doesn't matter.
 
 
 ## Factory
 
-A factory pattern is just a standard pattern that's used to **create** entities and value objects if the 
-creation of such object is a complex process. Don't use it if you don't need it, but it should be ready
+A factory pattern is just a [standard pattern](https://en.wikipedia.org/wiki/Design_Patterns) that's used to **create** entities and value objects if the 
+creation of such objects is a complex process. Don't use it if you don't need it, but it should be ready
 in your toolbox. 
 
-A good use factories can ensure that even the most complex entities can be created in a simple and intuitive 
+A good use of factories can ensure that even the most complex entities can be created in a simple and intuitive 
 way.
 
-Let's take a look at example, where we store `Post` objects that contain `Weather` information right 
+Let's take a look at the example, where we store `Post` objects that contain `Weather` information right 
 at the time when the `Post` was created:
 
 ```typescript
@@ -162,7 +166,7 @@ class PostFactory {
 ```
 
 However, if a simple constructor use is enough, just please use that. There is no need to make things more complicated
-than nessary.
+than necessary.
 
 Also, using factories inside repositories (later) is something that's better avoided.
 
@@ -171,17 +175,17 @@ Also, using factories inside repositories (later) is something that's better avo
 *Aggregates* are extremely important to understand and this is simpler said than done. 
 
 First of all, an aggregate is an *Entity*. Aggregates are about consistency and correctness of the state so when
-we say that some entity is an aggregate it means that there are some state consistency guarantess.
+we say that some entity is an aggregate it means that there are some state consistency guarantees.
 I think it would be great to start
-with a few rules for aggretates:
+with a few rules for aggregates:
  1. At any point in time, the whole state of an aggregate is valid
- 1. Two instances of different aggragates are independant and there are not consistency guarantees
+ 1. Two instances of different aggregates are independant and there are no consistency guarantees
  1. Aggregate is loaded and saved via aggregate root
- 1. The state of an aggragate is changed via aggregate root
+ 1. The state of an aggregate is changed via aggregate root
  1. No object-reference links are allowed between entities from different aggregate roots - only linking by Identity (ID)
  is allowed.
 
-At this point we should clarify what's an aggregate root. Basically, it's an entry point to the aggregate 
+At this point, we should clarify what's an aggregate root. It's an entry point to the aggregate 
 (Entity) object. One aggregate can contain other entities so their state consistency can be guaranteed via
 their common aggregate root.
 
@@ -225,16 +229,16 @@ class User {
 }
 ```
 
-Using the `User` interface we can guarantee the validity of the objects state but only within that scope.
-Domain-driven design abandons the idea of multi aggregate consistency as it is often impossible to ensure
-within distributed and horizontally scaled applications.
+Using the `User` interface we can guarantee the validity of the object's state but only within that scope.
+Domain-driven design abandons the idea of multi-aggregate consistency as it is often impossible to ensure
+within distributed and horizontally-scaled applications.
 
 If you need multi-aggregate consistency, you should rethink your approach to ensure that the most important
-guarantees are enforced at aggregate level.
+guarantees are enforced at the aggregate level.
 
-### Linking
-Object-Relational Mapping (ORMs) often do a horrible job linking different entities by offering lots of behind-the-scenes
-magic that usually lead to extremely complicated maintenance and all sorts of N+1 problems.
+### Entity Linking
+Object-Relational Mapping (ORM) often does a horrible job linking different entities by offering lots of behind-the-scenes
+magic that usually leads to extremely complicated maintenance and all sorts of N+1 problems.
 
 Domain-driven design just solves this problem in a simple way - no linking is allowed between two different 
 aggregate roots.
@@ -275,12 +279,12 @@ was used just for historical safekeeping purposes.
 
 ## Repository
 
-*Repository* is one of the main interfaces that connects your domain classes and infrastructure - it
-abstracts away all the aggragate (root) persistence details.
+A *Repository* is one of the main interfaces that connects your domain classes and infrastructure - it
+abstracts away all the aggregate (root) persistence details.
 
 I am a big fan 
-how [Spring Data](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html) 
-has implemented their interfaces and I recommend the same naming style 
+of how [Spring Data](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html) 
+has implemented its interfaces and I recommend the same naming style 
 guide for all the systems I am building:
 
 ```python
@@ -303,26 +307,26 @@ I think you can see the pattern:
  - simple and clearly named commands and queries
  - whenever you can, you return the domain object itself
  - it should (almost) always return the aggregate root so the consistency is guaranteed
- - you should only save the entity at aggregate root level
+ - you should only save the entity at the aggregate root level
 
-The technical details how is that implemented is quite irrelevant as long as it works and 
+The technical details of how is that implemented are quite irrelevant as long as it works and 
 you have integration tests to prove that.
 
 More experienced developers will even realize that you could implement extremely simple
-persistence layers via this pattern just using key-value stores that support
-range query. Redis could be your next database of choice if you are tired of fighting 
+persistence layers via this pattern just by using key-value stores that support
+range queries. Redis could be your next database of choice if you are tired of fighting 
 your usual ORM.
 
 ## Services
 
 *Service* is like an entry point to some business process. If it's not clear how to kick off some
-business-related commands/process then it should probably go to the Service.
+business-related commands/processes then it should probably go to the Service.
 
 Please do not mistake services with [Transactional Script](https://martinfowler.com/eaaCatalog/transactionScript.html) 
 which could quickly lead to
 an [anemic domain model](https://martinfowler.com/bliki/AnemicDomainModel.html).
 
-It most cases services are going to be quite simple and they are going to do a mix of the following:
+In most cases services are going to be quite simple and they are going to do a mix of the following:
  - they will be called from HTTP API
  - they will call other Services that they depend on
  - they will load and save entities/aggregates with the help of Repositories
@@ -352,11 +356,11 @@ class OrderService {
         try {
             Order paidOrder = paymentService.chargeUser(user, order);
             emailService.sendSuccessEmail(user, order);
-            orderRepository.save(order);
+            orderRepository.save(paidOrder);
         } catch (PaymentException e) {
             Order failedPaymentOrder = order.addPaymentFailureDetails(e);
             emailService.sendFailureEmail(user, order);
-            orderRepository.save(order);
+            orderRepository.save(failedPaymentOrder);
         }
 
     }
@@ -371,22 +375,22 @@ of the domain classes like `User` and `Order`.
 
 [Package your code by feature](http://www.javapractices.com/topic/TopicAction.do?Id=205#:~:text=Package%2Dby%2Dfeature%20uses%20packages,with%20minimal%20coupling%20between%20packages.) . Create 
 layer-based packages within the feature packages **if needed**. You might also need some sub-feature packages
-for bigger parts of the system so be on a look out for that.
+for bigger parts of the system so be on a lookout for that.
 
-Just for the sake of god please do not do layered design like people used to do in [Java EE days](https://stackoverflow.com/questions/5878774/standard-project-package-structure-of-a-j2ee-web-application).
+Just for the sake of god please do not do a layered design like people used to do in [Java EE days](https://stackoverflow.com/questions/5878774/standard-project-package-structure-of-a-j2ee-web-application).
 
 The way you structure the code should follow the following rule - "there should be one reason for code to change".
-The same is with code structure - if you go with layered design you will be changing multiple packages at once
+The same is with code structure - if you go with the layered design you will be changing multiple packages at once
 by definition if some bigger feature change is introduced.
 
 # Building RESTful interfaces
 Matching RESTful interfaces with domain-driven design can be a tricky business.
 
-There is a fundemental mismatch between the two. RESTFul interface is about returning and updating the 
-representation of the object and that's often exposed as CRUD-like interface via POST/GET/PUT/DELETE methods.
+There is a fundamental mismatch between the two. The RESTFul interface is about returning and updating the 
+representation of the object and that's often exposed as a CRUD-like interface via POST/GET/PUT/DELETE methods.
 
-However, some of these actions might not be allowed via domain model rules and current state of entities (like,
-you can't update the list of order items nor its state once the order is completed).
+However, some of these actions might not be allowed via domain model rules and the current state of entities (like,
+you can't update the list of order items or its state once the order is completed).
 
 Quite often I end up doing something like this
 
@@ -415,7 +419,7 @@ class OrderRest:
 ```
 
 
-sometimes things are a bit easier if you can extract sub-controller for the 
+sometimes things are a bit easier if you can extract the sub-controller for the 
 sub-resource for that domain object like *Items* within the *Order*:
 
 
@@ -463,17 +467,18 @@ and other API consumers
 wouldn't be too happy about that :).
 
 One acceptable alternative is to adopt Event Sourcing and use Commands to make these updates which
-can be a lot more natural way of connecting HTTP-based REST-like interface with domain model. However, this is
+can be a lot more natural way of connecting an HTTP-based REST-like interface with the domain model. However, this is
 a topic for another day.
 
 # Outro
 
 I hope this crash course on domain-driven design patterns for developers is useful. There is more stuff that could be 
-useful for developers but at this point I would just recommend reading the blue book. You will find out about:
+useful for developers but at this point, I would just recommend reading the blue book. You will find out about:
  - anti-corruption layer
  - shared-kernel
+ - and other quite useful bits
 
  Overall, I think that these approaches can help shape your programs to be more business oriented while avoiding 
- the pollution of all the infrastructure that often trashes the readibility and understandability of the code.
+ the pollution of all the infrastructure that often trashes the readability and understandability of the code.
 
  Adopting domain-driven design takes a lot of practice so just take your time and keep trying.
