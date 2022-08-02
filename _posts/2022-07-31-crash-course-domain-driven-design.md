@@ -221,7 +221,7 @@ class User {
     function addPaymentProvider(details: PaymentDetails) {
         /* payment provider can only come from that country where the user is from */
         if (details.country != this.address.country) {
-            throw new Exception("Payment provider country doesn not match user address");
+            throw new Exception("Payment provider country does not match user address");
         }
 
         this.paymentDetails = details;
@@ -293,14 +293,14 @@ class UserRepository:
     ...
 
     def save(self, user: User) -> User: ...
-    def save_all(self, users: list[User]) -> User: ...
+    def save_all(self, users: list[User]) -> list[User]: ...
     def find_one_by_id(self, id: uuid) -> User: ...
     def find_one_by_email(self, email: str) -> User: ...
     def exists(self, id: uuid) -> bool: ...
     def find_all(self, ) -> Iterable[User]: ...
     def find_all_by_name(self, name: str) -> Iterable[User]: ...
-    def find_all_by(self, email: str, name: str) -> User: ...
-    def delete(self, id: uuid) -> Iterable[User]: ...
+    def find_all_by(self, email: str, name: str) -> Iterable[User]: ...
+    def delete(self, id: uuid): ...
 ```
 
 I think you can see the pattern:
@@ -372,7 +372,9 @@ As you can see, it's responsible for the business process parts that do not natu
 of the domain classes like `User` and `Order`.
 
 # Overall structure
+A few quick comments on the structure of the app itself.
 
+## Packages (Modules)
 [Package your code by feature](http://www.javapractices.com/topic/TopicAction.do?Id=205#:~:text=Package%2Dby%2Dfeature%20uses%20packages,with%20minimal%20coupling%20between%20packages.) . Create 
 layer-based packages within the feature packages **if needed**. You might also need some sub-feature packages
 for bigger parts of the system so be on a lookout for that.
@@ -382,6 +384,31 @@ Just for the sake of god please do not do a layered design like people used to d
 The way you structure the code should follow the following rule - "there should be one reason for code to change".
 The same is with code structure - if you go with the layered design you will be changing multiple packages at once
 by definition if some bigger feature change is introduced.
+
+## Infrastructure vs domain model
+
+It's quite useful to understand the conceptual separation between your domain model and infrastructure.
+
+The domain model consists of:
+ - Aggregates
+ - Services
+ - Repositories
+ - Domain Events
+
+The infrastructure is something like:
+ - MySQL database
+ - React frontend (and RESTful APIs to support it)
+ - etc
+
+![Onion Architecture](/assets/images/domain-driven-design-clean-architecture.png "Onion Architecture - source: https://docs.abp.io/en/abp/4.0/Domain-Driven-Design-Implementation-Guide")
+
+Conceptually, your domain model should be able to replace React frontend with CLI and MySQL database should be replaceable by simple csv files. The domain model should
+not change just because you've changed some technical implementation bits.
+
+Of course, there is no need to go on and ensure that everything is replaceable at moments notice but use this as a mental excersice to have a clear 
+separation to yourself.
+
+[Read more here](https://docs.abp.io/en/abp/4.0/Domain-Driven-Design-Implementation-Guide)
 
 # Building RESTful interfaces
 Matching RESTful interfaces with domain-driven design can be a tricky business.
