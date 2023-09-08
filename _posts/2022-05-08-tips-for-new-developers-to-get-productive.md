@@ -3,7 +3,6 @@ layout: post
 title: Tips for new developers to get productive fast
 author: Tadas Šubonis
 date: '2022-05-08'
-toc: true
 tags:
  - api
  - software development
@@ -22,8 +21,8 @@ To get some coding basics in order, you should do the following readings (multip
  * Use [package by feature](http://www.javapractices.com/topic/TopicAction.do?Id=205#:~:text=Package%2Dby%2Dfeature%20uses%20packages,with%20minimal%20coupling%20between%20packages.) - code grouping by layer doesn't really make sense from maintanability and business sense. 
  * [Don't use inheritance - use composition](https://python-patterns.guide/gang-of-four/composition-over-inheritance/). Most of the problems in OOP can be very efficiently and clearly expressed using interfaces and composition. Inheritance is unreadble, difficult to maintain, and update. Just don't use it.
  * Learn [immutable patterns](https://dev.tasubo.com/2020/04/functional-object-oriented-programming.html). You can do Object-Oriented programming with functional principles - these two concepts are orthogonal.
-  * [Immutables](https://immutables.github.io/) - Immutable objects for Java
-  * Dataclasses
+   * [Immutables](https://immutables.github.io/) - Immutable objects for Java
+   * [Dataclasses](https://docs.python.org/3/library/dataclasses.html) - use `frozen=True` on Python Dataclasses
  * [Prematature optimization is evil](https://wiki.c2.com/?PrematureOptimization) - don't waste your time with your false opinions improving things that do not matter
 	
 	
@@ -46,8 +45,8 @@ I've seen plenty of architected-level code designers coming up with bizarre inhe
 ## Write tests first, use functional description language
 
 I am a big fan of behavior driven development and you don't need any fancy frameworks for that. BDD means just a few simple things:
-	• Your tests are structured using Given/When/Then structure (implicitly or explicitly)
-	• The test itself includes definitions of expected behavior in a language that domain people can understand
+* Your tests are structured using Given/When/Then structure (implicitly or explicitly)
+* The test itself includes definitions of expected behavior in a language that domain people can understand
 
 For example, don't write
 ```java
@@ -66,7 +65,7 @@ When writing tests, describe the behavior of the functionality within the test. 
 it like a documentation.
 
 There should be a clear Given, When, Then structure inside the test:
-```
+```java
 void when_email_is_sent_logs_should_be_updated() {
 	//given
 	var emailService = emailSendingServiceIsReady();
