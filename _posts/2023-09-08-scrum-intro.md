@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Scrum Introduction
+title: Scrum Introduction & Workflow for Software Developers
 author: Tadas Šubonis
 date: '2023-09-08'
 toc: true
@@ -10,6 +10,17 @@ tags:
 ---
 
 A general overview and introduction to Scrum for junior developers that haven't done this before.
+
+Overall, Scrum is one of the [Agile](https://agilemanifesto.org/) project management methodologies. However, Scrum lays out some specific guideliness how to achieve that.
+
+[Scrum](https://www.atlassian.com/agile/scrum) is about these principles (I'll mention related ceremonies/rituals in the brackets):
+
+ 1. Iterative delivery of software that WORKS ("done" is actually done) in a boxed intervals ([Sprints](https://www.atlassian.com/agile/scrum/sprints))
+ 1. Constant and regular feedback from stakeholders ([Reviews](https://www.atlassian.com/agile/scrum/sprint-reviews))
+ 1. Continuous improvement in the work habits ([Retrospectives](https://www.atlassian.com/agile/scrum/retrospectives))
+ 1. Regular syncs and proactive blocker management within the team ([Daily Updates](https://www.atlassian.com/agile/scrum/standups))
+ 1. Work on the highest business impact features first and adjust often ([Backlog](https://www.atlassian.com/agile/scrum/backlogs), [Planning](https://www.atlassian.com/agile/scrum/sprint-planning) and [Grooming](https://www.atlassian.com/agile/scrum/backlog-refinement))
+ 1. Predictable delivery and pace planning ([Story Points](https://www.atlassian.com/agile/project-management/estimation), [Velocity](https://www.atlassian.com/agile/project-management/metrics))
 
 # Planning
 
@@ -66,7 +77,7 @@ It's essential to update tasks regularly. Any task should not remain stagnant in
     - Assign a task in Jira, changing its status to INPROGRESS.
     - For code-based tasks, initiate a branch in the repository using the format `TaskNumber_Short_task_description`.
     - For research or documentation tasks, create a placeholder in the dedicated Confluence page with a descriptive title.
-    
+
 2. **Progress**:
     - Continually commit updates to the branch for code tasks.
     - For research tasks, update the documentation or report.
