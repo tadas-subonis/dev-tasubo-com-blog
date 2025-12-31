@@ -1,62 +1,62 @@
 ---
 layout: post
-title: "How to use AI meaninfully and effectively"
+title: "How to use AI meaningfully and effectively"
 date: 2025-12-31 12:00:00 +0000
 categories: [ai, productivity]
 tags: [ai, best-practices, workflow]
 ---
 
 ## Intro
-Recently, I've realised that a lot of newer developers and information workers 
-in general have not realised that availability of LLMs like ChatGPT and Perplexity 
-changed the expecations of the work delivered.
+Recently, I've realised that a lot of newer developers and information workers
+in general haven't realised that the availability of LLMs like ChatGPT and Perplexity
+has changed expectations for what "good work" looks like.
 
-TLDR: ***the bar has increased*** 
+TL;DR: ***the bar has increased***
 
-You should assume these things:
- - It's completely fine to use LLMs and you should use LLMs
- - It's not fine to produce AI slop
- - You + AI > AI only
+Assume this:
+- It's completely fine to use LLMs - and you should use them.
+- It's not fine to produce AI slop.
+- You + AI > AI alone.
 
 
 ## Don't be a bystander
 
 My biggest beef is when people get an assignment, copy-paste it to the 
-LLMs, and copy-paste the answer as the completed task.
+LLM, and then copy-paste the answer as the completed task.
 
 I can do this myself, you know, and it will be quicker than asking 
-you, the intermediatery, to do it.
+you, the intermediary, to do it.
 
-Then it begs the question - what's your value in this process. 0.
+That begs the question: what's your value in this process? Zero.
 
-If your value is 0, then you won't be kept on a payroll for long. 
+If your value is zero, you won't be kept on the payroll for long.
 
-As AIs become smarter, you will want to take more easy path just by copy-pasting the answer.
+As AIs become smarter, you'll be tempted to take the easier path by copy-pasting the answer.
 
 This is wrong - you need to do more.
 
 ## Build understanding and criteria
 
-Let's take some example like "Build me a Go-To-Market plan to launch todo
-business saas".
+Let's take an example like: "Build me a go-to-market plan to launch a todo-business
+SaaS".
 
-If I just copy this request, ask GPT to build me a plan, and copy paste it back
-it will give you something generic, maybe even something useable if you squint the right way. But this is AI slop.
+If I just copy this request, ask GPT to build me a plan, and copy-paste it back,
+it will give you something generic - maybe even something usable if you squint the right way. But this is AI slop.
 
-Start by researching what is a good GTM plan, get some understanding what it should cover and what it should not cover.
+Start by researching what a good GTM plan looks like. Get a feel for what it should cover - and what it should not.
 
-Then research what has worked for the people and what hasn't. Find some good examples that you like. Find bad ones.
+Then research what has worked for other people and what hasn't. Find some good examples you like. Find bad ones too.
 
-Check what's specific about your situation and check if you can play that to your advantage.
+Figure out what's specific about your situation and whether you can turn it into an advantage.
 
 ## Be a manager
 
-In the age of AIs, Agents, LLMs and what nots you, as an indvidual contributor,
-are becoming less of the work doer but more like a result deliverer.
+In the age of AIs, agents, LLMs, and whatnot, you (as an individual contributor)
+are becoming less of a doer and more of a deliverer.
 
-You oversee multiple agents and tools to help you deliver something useful. Something that moves a needle.
+You oversee multiple agents and tools to help you deliver something useful. Something that moves the needle.
 
-Basically, you are becoming a manager. Manager is roughly responsible for
+Basically, you are becoming a manager. A manager is roughly responsible for:
 
  1. Set direction: goals/priorities/metrics, roadmap, tradeoffs & "no"
  1. Deliver through others: ship outcomes, remove blockers/manage deps, maintain quality & sustainable pace
@@ -64,25 +64,24 @@ Basically, you are becoming a manager. Manager is roughly responsible for
  1. Run the operating system: rituals (plan/standup/review/retro), improve process/tools, protect focus from thrash
  1. Align & communicate: clear updates, stakeholder alignment, expectations & risk management
 
-AI Manager version will look more like:
- 1. Pick the work: choose the few tasks AI can win. define "good." set limits.
- 1. Use it to move faster: draft, sort, compare, plan. then you decide. ship.
- 1. Teach the team: share good prompts. review outputs. fix sloppy use fast.
- 1. Make it repeatable: templates, checklists, saved prompts. human review on key items.
- 1. Stay aligned: tell people what AI did. what you checked. what risks remain.
+The AI-manager version looks more like:
+ 1. Pick the work: choose the few tasks AI can win; define "good"; set limits.
+ 1. Use it to move faster: draft, sort, compare, plan - then you decide and ship.
+ 1. Teach the team: share good prompts; review outputs; fix sloppy use fast.
+ 1. Make it repeatable: templates, checklists, saved prompts; human review on key items.
+ 1. Stay aligned: tell people what AI did, what you checked, and what risks remain.
 
 ## Most common pitfalls
 
-To make this post complete and useful, I've collected a few most common pitfalls that I've noticed. 
+To make this post complete and useful, I've collected a few common pitfalls I've noticed.
 
-It's really easy to produce AI slop but also it's easy to not do this if you 
-just avoid a few most common pitfalls. AI generated output does not mean 
-that it's AI slop automatically.
+It's really easy to produce AI slop, but it's also easy to avoid if you steer clear of a few traps.
+AI-generated output is not automatically slop.
 
 ###  Vague prompts
-Avoid "generate me a go-to-market plan" use something like "you are expert
-sales and marketing specialist. Create a practical but comprehensive plan that 
-can be used by junior specialists to execute a product launch. be sure to include cold outreach, how to utilize the current professional network"
+Avoid "generate me a go-to-market plan". Use something like:
+"You are an expert sales and marketing specialist. Create a practical but comprehensive plan that
+can be used by junior specialists to execute a product launch. Be sure to include cold outreach and how to utilise an existing professional network."
 
 Not perfect but much better.
 
@@ -90,7 +89,7 @@ When you leave gaps, the model fills them with safe, generic lines. It has no ra
 
 ### Multiple tasks 
 It's better to give a single task in a single prompt and then build the 
-entire result gradually from 2-4 requests.
+entire result gradually from 2–4 prompts.
 
 Packing many tasks into one prompt makes the output worse.
 
@@ -100,17 +99,17 @@ Do it in steps. One task at a time. Build the result.
 
  - Request 1: Analyze customer feedback. Name the top 3 pain points.
  - Request 2: Using those pain points, suggest 3 marketing angles.
-- Request 3: Using those pain points, define hiring needs.
+ - Request 3: Using those pain points, define hiring needs.
 
 Single-task prompts, in sequence, beat one big prompt every time.
 
 ### Too chatty output
-Sometimes LLMs get really chatty. Make sure the text is coincise, well structured and easy to read.
+Sometimes LLMs get really chatty. Make sure the text is concise, well-structured, and easy to read.
 
-It kinda beats the purpose if I have to use LLM again to summarize your document and you used LLM to produce the said document.
+It defeats the purpose if I have to use an LLM again to summarise your document after you used an LLM to produce it.
 
 ### The AI voice
-It kinda goes with AI chattiness but it often has this annoyting AI style
+This often goes with the chattiness: it has that annoying "AI voice".
 
 
 These words and phrases scream "ChatGPT wrote this":
@@ -176,9 +175,9 @@ It stops generic filler. It forces coverage. It makes results repeatable.
 
 ## Make notes and guides
 
-Things that work, templates, instructions, prompts, model version - make a note of that.
+When something works - templates, instructions, prompts, model version - make a note of it.
 
-Later, you can organize this into an effective library of tools to help you deliver higher quality and faster.
+Later, you can organise this into an effective library of tools to help you deliver higher quality work, faster.
 
 When something fails, write that down too.
 
@@ -190,18 +189,17 @@ What to save:
 
 ## Go-to-Market example
 
-(below is the example that I liked and I one-shotted it with GPT 5.2 after
-I've supplied it with good context)
+(Below is an example I liked. I one-shot it with GPT-5.2 after I supplied it with good context.)
 
 Let’s apply the whole workflow to a simple case:
 
-**Product:** “Todo business SaaS” (team task manager)
+**Product:** "Todo-business SaaS" (team task manager)
 **Goal:** launch v1 and get first paying customers
 **Constraint:** small team, no brand, limited budget
 
-### Step 0 — Put rails in place
+### Step 0 - Put rails in place
 
-Before you ask the model to “make a GTM plan,” give it your **shape** and **rules**.
+Before you ask the model to "make a GTM plan," give it your **shape** and **rules**.
 
 Copy this skeleton and fill the brackets:
 
@@ -213,7 +211,7 @@ Copy this skeleton and fill the brackets:
 * **Success metric:** [number + date]
 * **Constraints:** [legal, channels you won’t use, etc.]
 
-Now the first prompt is not “write plan.” It is “build structure.”
+Now the first prompt is not "write plan." It is "build structure."
 
 ```text
 You are a B2B go-to-market lead.
@@ -234,7 +232,7 @@ Output:
 
 You just forced a usable template.
 
-### Step 1 — Research, then narrow the problem
+### Step 1 - Research, then narrow the problem
 
 Next, you do *one job*.
 
@@ -246,13 +244,13 @@ Example customer notes (fake, but shaped like real ones):
 
 ```text
 Customer snippets:
-1) “Tasks live in Slack, email, and people’s heads. Nothing is reliable.”
-2) “We miss deadlines because ownership is unclear.”
-3) “Asana is too heavy. People stop using it.”
+1) "Tasks live in Slack, email, and people’s heads. Nothing is reliable."
+2) "We miss deadlines because ownership is unclear."
+3) "Asana is too heavy. People stop using it."
 ...
-8) “Managers want visibility without nagging.”
-9) “We already pay for Microsoft 365.”
-10) “If setup takes more than 30 minutes, nobody adopts it.”
+8) "Managers want visibility without nagging."
+9) "We already pay for Microsoft 365."
+10) "If setup takes more than 30 minutes, nobody adopts it."
 ```
 
 Prompt:
@@ -262,13 +260,13 @@ Analyze the snippets.
 Output:
 - Top 3 pain points (ranked)
 - Evidence: quote 2 lines per pain point
-- The “job to be done” sentence for each
+- The "job to be done" sentence for each
 - A short note on what NOT to build for v1
 ```
 
-Now you have criteria. You can say “no” with confidence.
+Now you have criteria. You can say "no" with confidence.
 
-### Step 2 — Positioning, but only from the pain
+### Step 2 - Positioning, but only from the pain
 
 Next single task.
 
@@ -278,7 +276,7 @@ Based on the top 3 pain points, write:
 - 3 value propositions (one sentence each)
 - 5 proof points we can realistically claim for v1
 Constraints:
-- No hype words. No “leverage,” “robust,” “comprehensive.”
+- No hype words. No "leverage," "robust," "comprehensive."
 - Make it specific to EU service companies.
 ```
 
@@ -292,9 +290,9 @@ Rewrite using:
 - a clear differentiator vs Asana/Trello
 ```
 
-### Step 3 — Channels, but with tradeoffs
+### Step 3 - Channels, but with tradeoffs
 
-Don’t ask for “all channels.” Ask for the best few **given your limits**.
+Don’t ask for "all channels." Ask for the best few **given your limits**.
 
 ```text
 Given our context (budget €2k/mo, 1 founder), pick 2 primary acquisition channels.
@@ -306,9 +304,9 @@ For each:
 Output as a table.
 ```
 
-This is “set direction” and “say no.”
+This is "set direction" and "say no."
 
-### Step 4 — Produce assets, one at a time
+### Step 4 - Produce assets, one at a time
 
 Now you use AI like a tool bench.
 
@@ -349,7 +347,7 @@ Must show:
 End with a clear close.
 ```
 
-### Step 5 — Adversarial review
+### Step 5 - Adversarial review
 
 This is where you stop lying to yourself.
 
@@ -365,7 +363,7 @@ Then propose fixes.
 
 You just did a pre-mortem.
 
-### Step 6 — Turn it into a one-page execution plan
+### Step 6 - Turn it into a one-page execution plan
 
 Only now do you ask for the final artifact.
 
@@ -382,7 +380,7 @@ Must include:
 Format: headings + bullets only.
 ```
 
-### Step 7 — Save what worked
+### Step 7 - Save what worked
 
 This is the part people skip.
 
