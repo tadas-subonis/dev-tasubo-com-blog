@@ -49,6 +49,14 @@ Then research what has worked for other people and what hasn't. Find some good e
 
 Figure out what's specific about your situation and whether you can turn it into an advantage.
 
+Before you prompt, answer these:
+ - What does a good version of this look like? Find one.
+ - What does a bad version look like? Find one.
+ - What's specific to my situation that the model won't know?
+ - What's the one thing this output must get right?
+
+If you can't answer these, you're not ready to prompt yet.
+
 ## Be a manager
 
 In the age of AIs, agents, LLMs, and whatnot, you (as an individual contributor)
