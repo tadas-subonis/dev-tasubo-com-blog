@@ -2,7 +2,9 @@
 # Usage: make <target>
 
 SHELL := /bin/bash
-JEKYLL := bundle exec jekyll
+BUNDLE_PATH ?= vendor/bundle
+BUNDLE := BUNDLE_PATH=$(BUNDLE_PATH) bundle
+JEKYLL := $(BUNDLE) exec jekyll
 BUILD_DIR := _site
 PORT ?= 4000
 HOST ?= 127.0.0.1
