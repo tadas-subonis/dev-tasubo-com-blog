@@ -7,13 +7,15 @@
 
 	<body>
 
-		{% include header.html %}
+		<div class="site-card">
+			{% include header.html %}
 
-		<main>
-			{{ content | replace: '&#8617;', '&#8617;&#xfe0e;' }}
-		</main>
+			<main>
+				{{ content | replace: '&#8617;', '&#8617;&#xfe0e;' }}
+			</main>
 
-		{% include footer.html %}
+			{% include footer.html %}
+		</div>
 
 	</body>
 

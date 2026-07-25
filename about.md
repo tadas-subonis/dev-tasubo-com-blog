@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About Me
+eyebrow: About
 tags: about
 ---
 

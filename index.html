@@ -2,21 +2,58 @@
 layout: default
 ---
 
-<section>
+{% assign featured = site.posts.first %}
+{% assign archive_posts = site.posts | where_exp: "post", "post.url != featured.url" %}
+{% assign years = archive_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 
-	{% for post in site.posts %}
+<section class="archive">
+  <header class="archive-header">
+    <p class="eyebrow">Engineering field notes</p>
+    <h1>Software development notes</h1>
+    <p>Field notes on building software well: domain-driven design, clean code, functional thinking, and the habits that compound over a career.</p>
+  </header>
 
-		<ul>
-			<li>
-				<div class="post-date">
-					<span>{{ post.date | date: "%b %d %Y" }}</span>
-				</div>
-				<div class="title">
-					<a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.title }}</a>
-				</div>
-			</li>
-		</ul>
+  {% if featured %}
+    {% assign featured_words = featured.content | strip_html | number_of_words %}
+    {% assign featured_read_minutes = featured_words | plus: 199 | divided_by: 200 %}
+    {% if featured_read_minutes < 1 %}{% assign featured_read_minutes = 1 %}{% endif %}
+    <article class="featured-note">
+      <a class="featured-link" href="{{ featured.url | prepend: site.baseurl }}">
+        <div class="featured-copy">
+          <div class="featured-meta">
+            <span class="latest-label">Latest</span>
+            <time datetime="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%Y-%m-%d" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ featured_read_minutes }} min read</span>
+          </div>
+          <h2>{{ featured.title }}</h2>
+          <p>{{ featured.excerpt | split: '</h1>' | last | split: '</h2>' | last | strip_html | normalize_whitespace | truncate: 220 }}</p>
+          <span class="read-note">Read the note <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </article>
+  {% endif %}
 
-	{% endfor %}
-
+  <section class="archive-list" aria-label="Archive">
+    <p class="archive-label">Archive</p>
+    {% for year in years %}
+      <section class="archive-year" aria-labelledby="year-{{ year.name }}">
+        <h2 id="year-{{ year.name }}">{{ year.name }}</h2>
+        <ul class="post-list">
+          {% for post in year.items %}
+            <li>
+              <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b" }}</time>
+              <div class="post-entry">
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                {% if post.tags and post.tags.size > 0 %}
+                  <p class="post-tags">{{ post.tags | join: " · " }}</p>
+                {% endif %}
+              </div>
+              <span class="row-arrow" aria-hidden="true">→</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </section>
 </section>

@@ -1,21 +1,15 @@
-<aside class="logo">
+<header class="site-masthead">
+  <div class="masthead-identity">
+    <a class="masthead-mark" href="{{ "/about.html" | prepend: site.baseurl }}" aria-label="About me">
+      <img src="https://www.gravatar.com/avatar/{{ site.author_gravatar }}.png?s=128" alt="">
+    </a>
+    <div class="masthead-copy">
+      <a class="site-title" href="{{ "/" | prepend: site.baseurl }}">{{ site.author_name }}</a>
+      <p>{{ site.description }}</p>
+    </div>
+  </div>
 
-	{% if page.url == '/index.html' or page.url == '/' %}
-		{% assign link = '/about' %}
-		{% assign prompt = 'About the Author' %}
-	{% else %}
-		{% assign link = '/' %}
-		{% assign prompt = 'Back to Home' %}
-	{% endif %}
-
-	<a class="avatar" href="{{ link | prepend: site.baseurl }}">
-		<img src="//www.gravatar.com/avatar/{{ site.author_gravatar }}.png?s=80" class="gravatar">
-	</a>
-	<span class="logo-prompt">{{ prompt }}</span>
-
-	<div class="clearfix"></div>
-	{% if site.show_social_icons %}
-	  {% include social_links.html %}
-	{% endif %}
-
-</aside>
+  {% if site.show_social_icons %}
+    {% include social_links.html %}
+  {% endif %}
+</header>

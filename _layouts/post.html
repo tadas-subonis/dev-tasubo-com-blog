@@ -2,60 +2,79 @@
 layout: default
 ---
 
-<article>
+{% assign post_words = content | strip_html | number_of_words %}
+{% assign post_read_minutes = post_words | plus: 199 | divided_by: 200 %}
+{% if post_read_minutes < 1 %}{% assign post_read_minutes = 1 %}{% endif %}
 
-	<div class="center">
-		<h1>{{ page.title }}</h1>
-		<time>{{ page.date | date: site.date_format  }}</time>
-	</div>
+<article class="post">
+  <div class="post-layout">
+    <div class="post-content">
+      <a class="post-back" href="{{ "/" | prepend: site.baseurl }}">← All notes</a>
+      <header class="post-header">
+        <p class="eyebrow">Field note</p>
+        <h1>{{ page.title }}</h1>
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.date_format }}</time>
+          <span aria-hidden="true">·</span>
+          <span>{{ post_read_minutes }} min read</span>
+          {% if page.tags and page.tags.size > 0 %}
+            <span aria-hidden="true">·</span>
+            <span>{{ page.tags | join: " · " }}</span>
+          {% endif %}
+        </div>
+      </header>
 
+      {{ content }}
 
-	<div class="divider"></div>
-	{% include toc.html html=content %}
-	{{ content }}
-	
-	{% if site.show_sharing_icons %}
-	{% include share_buttons.html %}
-	{% endif %}
+      {% if site.show_sharing_icons %}
+        {% include share_buttons.html %}
+      {% endif %}
+    </div>
+
+    <aside class="post-aside">
+      <p class="toc-label">On this page</p>
+      <nav class="toc" aria-label="Table of contents">
+        {% include toc.html html=content %}
+      </nav>
+      <div class="toc-meta">
+        <div class="toc-meta-read">{{ post_read_minutes }} min read</div>
+        <div>~{{ post_words }} words</div>
+      </div>
+    </aside>
+  </div>
 </article>
 
 <div class="page-navigation">
-	{% if page.next.url %}
-    <a class="next" href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}" title="NEXT: {{page.next.title}}">&lt;&lt;</a>
-		<span> &middot; </span>
+  {% if page.next.url %}
+    <a class="next" href="{{ page.next.url | prepend: site.baseurl }}" title="Next: {{page.next.title}}">Newer note</a>
+    <span> &middot; </span>
   {% endif %}
-		<a class="home" href="{{ site.baseurl | prepend: site.url }}" title="Back to Homepage">Home</a>
+  <a class="home" href="{{ site.baseurl }}/" title="Back to Homepage">Home</a>
   {% if page.previous.url %}
-		<span> &middot; </span>
-    <a class="prev" href="{{ page.previous.url | prepend: site.baseurl | prepend: site.url }}" title="PREV: {{page.previous.title}}">&gt;&gt;</a>
+    <span> &middot; </span>
+    <a class="prev" href="{{ page.previous.url | prepend: site.baseurl }}" title="Previous: {{page.previous.title}}">Older note</a>
   {% endif %}
 </div>
 
-
-
 <div class="after-article">
-	{% if txtpen.txtpen_sitename %}
-	<script src="https://txtpen.com/embed.js?site={{txtpen.txtpen_sitename}}" />
-	{% endif %}
+  {% if txtpen.txtpen_sitename %}
+    <script src="https://txtpen.com/embed.js?site={{txtpen.txtpen_sitename}}"></script>
+  {% endif %}
 
-	{% if site.disqus_shortname %}
-	<div id="disqus_thread"></div>
-	<script>
-
-	/**
-	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-	var disqus_config = function () {
-	this.page.url = '{{ site.url }}' + '{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-	this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-	};
-	(function() { // DON'T EDIT BELOW THIS LINE
-	var d = document, s = d.createElement('script');
-	s.src = 'https://tasubo-dev.disqus.com/embed.js';
-	s.setAttribute('data-timestamp', +new Date());
-	(d.head || d.body).appendChild(s);
-	})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	{% endif %}
+  {% if site.disqus_shortname %}
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = '{{ site.url }}' + '{{ page.url }}';
+        this.page.identifier = '{{ page.id }}';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://tasubo-dev.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  {% endif %}
 </div>

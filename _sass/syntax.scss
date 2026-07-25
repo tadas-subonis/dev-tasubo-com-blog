@@ -252,3 +252,132 @@
   }
   // Literal.Number.Integer.Long
 }
+
+// Terminal treatment from the field-notes design. Rouge supplies the token
+// classes below for both fenced Markdown blocks and `{% highlight %}` blocks.
+// Scoped to div/figure wrappers: kramdown also puts .highlighter-rouge on
+// inline <code> spans, which must keep the regular inline styling.
+.post-content {
+  figure.highlight,
+  div.highlighter-rouge {
+    position: relative;
+    margin: 26px 0;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: #23211c;
+    box-shadow: 0 1px 0 rgba(40, 36, 28, 0.12);
+
+    &::before {
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 11px 0 11px 16px;
+      border-radius: 50%;
+      background: #c0491f;
+      box-shadow: 19px 0 #d9a441, 38px 0 #6b8f5e;
+      content: "";
+    }
+
+    &::after {
+      position: absolute;
+      top: 9px;
+      left: 82px;
+      color: #8a8377;
+      content: "source code";
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  div.highlighter-rouge .highlight {
+    margin: 0;
+  }
+
+  figure.highlight pre,
+  div.highlighter-rouge pre {
+    margin: 0;
+    padding: 20px 22px;
+    overflow-x: auto;
+    border: 0;
+    border-radius: 0 0 8px 8px;
+    background: #23211c;
+    color: #e5e1d6;
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 0.906rem;
+    line-height: 1.75;
+
+    code {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      color: inherit;
+      background: transparent;
+      font-size: 100%;
+      letter-spacing: normal;
+    }
+  }
+
+  div.language-java.highlighter-rouge::after { content: "example.java"; }
+  div.language-groovy.highlighter-rouge::after { content: "build.gradle"; }
+  div.language-javascript.highlighter-rouge::after { content: "example.js"; }
+  div.language-python.highlighter-rouge::after { content: "example.py"; }
+  div.language-sql.highlighter-rouge::after { content: "query.sql"; }
+  div.language-typescript.highlighter-rouge::after { content: "example.ts"; }
+  div.language-xml.highlighter-rouge::after { content: "example.xml"; }
+
+  figure.highlight,
+  div.highlighter-rouge {
+    .c,
+    .cm,
+    .c1,
+    .cp,
+    .cs,
+    .go,
+    .gp,
+    .w { color: #9c968a; }
+
+    .k,
+    .kc,
+    .kd,
+    .kp,
+    .kr,
+    .kn,
+    .ow { color: #d9a441; font-weight: 500; }
+
+    .s,
+    .s1,
+    .s2,
+    .sa,
+    .sb,
+    .sc,
+    .sd,
+    .se,
+    .sh,
+    .si,
+    .sr,
+    .ss { color: #a8c99a; }
+
+    .m,
+    .mf,
+    .mh,
+    .mi,
+    .mo,
+    .il { color: #e58b5a; }
+
+    .kt,
+    .nc,
+    .nn { color: #8fb8e0; }
+
+    .na,
+    .nf,
+    .nv,
+    .vc,
+    .vg,
+    .vi { color: #c79bc7; }
+
+    .o,
+    .p { color: #9c968a; font-weight: 400; }
+    .err { color: #e58b5a; background: transparent; }
+  }
+}
